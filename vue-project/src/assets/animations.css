@@ -1,0 +1,39 @@
+.reveal {
+    opacity: 0;
+
+    transform: translateY(40px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+.image-reveal {
+    overflow: hidden;
+}
+
+.image-reveal img {
+    transform: scale(1.08);
+
+    transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.image-reveal.active img {
+    transform: scale(1);
+}
+
+.hover-lift {
+    transition:
+        transform var(--transition-medium),
+        box-shadow var(--transition-medium);
+}
+
+.hover-lift:hover {
+    transform: translateY(-8px);
+}
