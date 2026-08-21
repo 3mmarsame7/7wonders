@@ -1,173 +1,415 @@
 <script setup>
-import { onMounted, onUnmounted, ref } from "vue";
+import {
+  onMounted,
+  onUnmounted,
+  ref,
+  nextTick,
+} from "vue";
 
 import Navbar from "./components/Navbar.vue";
 import WonderSection from "./components/WonderSection.vue";
 
+/* =====================================================
+   STATE
+===================================================== */
+
 const activeWonder = ref("01");
 const heroOffset = ref(0);
 
-const wonders = [
-  {
-    number: "01",
-    shortTitle: "GREAT PYRAMID",
-    category: "ANCIENT WORLD",
-    title: "THE GREAT PYRAMID OF GIZA",
-    description:
-      "Built thousands of years ago, the Great Pyramid of Giza remains one of humanity's most remarkable architectural achievements and the only surviving wonder of the ancient world.",
-    location: "GIZA, EGYPT",
-    built: "c. 2560 BCE",
-    image:
-      "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368",
-    theme: "sand",
-  },
-
-  {
-    number: "02",
-    shortTitle: "HANGING GARDENS",
-    category: "ANCIENT WORLD",
-    title: "THE HANGING GARDENS OF BABYLON",
-    description:
-      "A legendary garden said to have transformed the ancient city of Babylon into a remarkable landscape of terraces, plants, water, and architectural imagination.",
-    location: "BABYLON, IRAQ",
-    built: "c. 600 BCE",
-    image:
-      "https://images.unsplash.com/photo-1518005020951-eccb494ad742",
-    theme: "garden",
-  },
-
-  {
-    number: "03",
-    shortTitle: "TEMPLE OF ARTEMIS",
-    category: "ANCIENT WORLD",
-    title: "TEMPLE OF ARTEMIS",
-    description:
-      "A monumental sanctuary dedicated to Artemis, the ancient Greek goddess of the hunt, celebrated for its extraordinary scale and architectural beauty.",
-    location: "EPHESUS, TURKEY",
-    built: "c. 550 BCE",
-    image:
-      "https://images.unsplash.com/photo-1603565816030-6b389eeb23cb",
-    theme: "marble",
-  },
-
-  {
-    number: "04",
-    shortTitle: "STATUE OF ZEUS",
-    category: "ANCIENT WORLD",
-    title: "STATUE OF ZEUS AT OLYMPIA",
-    description:
-      "A colossal representation of Zeus created by the sculptor Phidias, once regarded as one of the greatest artistic achievements of the ancient Greek world.",
-    location: "OLYMPIA, GREECE",
-    built: "c. 435 BCE",
-    image:
-      "https://images.unsplash.com/photo-1552832230-c0197dd311b5",
-    theme: "gold",
-  },
-
-  {
-    number: "05",
-    shortTitle: "MAUSOLEUM",
-    category: "ANCIENT WORLD",
-    title: "MAUSOLEUM AT HALICARNASSUS",
-    description:
-      "An extraordinary monumental tomb whose architecture became so influential that the word mausoleum entered the vocabulary of the world.",
-    location: "BODRUM, TURKEY",
-    built: "c. 350 BCE",
-    image:
-      "https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e",
-    theme: "stone",
-  },
-
-  {
-    number: "06",
-    shortTitle: "COLOSSUS",
-    category: "ANCIENT WORLD",
-    title: "COLOSSUS OF RHODES",
-    description:
-      "A gigantic bronze statue that once stood at the entrance of Rhodes, symbolizing the strength and prosperity of the ancient island city.",
-    location: "RHODES, GREECE",
-    built: "c. 280 BCE",
-    image:
-      "https://images.unsplash.com/photo-1533105079780-92b9be482077",
-    theme: "ocean",
-  },
-
-  {
-    number: "07",
-    shortTitle: "LIGHTHOUSE",
-    category: "ANCIENT WORLD",
-    title: "LIGHTHOUSE OF ALEXANDRIA",
-    description:
-      "One of the most famous structures of the ancient Mediterranean, the Lighthouse of Alexandria guided ships toward the harbor for centuries.",
-    location: "ALEXANDRIA, EGYPT",
-    built: "c. 280 BCE",
-    image:
-      "https://images.unsplash.com/photo-1568322445389-f64ac2515020",
-    theme: "sunset",
-  },
-];
+const wonders = ref([]);
+const loading = ref(true);
+const error = ref(null);
 
 let observer;
 
+/* =====================================================
+    API
+===================================================== */
+
+const API_URL =
+  "https://www.world-wonders-api.org/v0/wonders";
+
 
 /* =====================================================
-   SCROLL TO WONDERS
+    WONDER THEMES
+===================================================== */
+
+
+const getWonderTheme = (name) => {
+  const title = name?.toLowerCase() || "";
+
+  // 01 - Great Pyramid of Giza
+  if (
+    title.includes("great pyramid") ||
+    title.includes("pyramid of giza")
+  ) {
+    return "sand";
+  }
+
+  // 02 - Hanging Gardens of Babylon
+  if (
+    title.includes("hanging gardens") ||
+    title.includes("babylon")
+  ) {
+    return "garden";
+  }
+
+  // 03 - Temple of Artemis
+  if (
+    title.includes("temple of artemis") ||
+    title.includes("artemis")
+  ) {
+    return "marble";
+  }
+
+  // 04 - Statue of Zeus
+  if (
+    title.includes("statue of zeus") ||
+    title.includes("zeus")
+  ) {
+    return "gold";
+  }
+
+  // 05 - Mausoleum at Halicarnassus
+  if (
+    title.includes("mausoleum") ||
+    title.includes("halicarnassus")
+  ) {
+    return "stone";
+  }
+
+  // 06 - Colossus of Rhodes
+  if (
+    title.includes("colossus") ||
+    title.includes("rhodes")
+  ) {
+    return "ocean";
+  }
+
+  // 07 - Lighthouse of Alexandria
+  if (
+    title.includes("lighthouse") ||
+    title.includes("alexandria")
+  ) {
+    return "sunset";
+  }
+
+  // Fallback
+  return "sand";
+};
+
+/* =====================================================
+    API
+===================================================== */
+
+const fetchWonders = async () => {
+  try {
+    loading.value = true;
+    error.value = null;
+
+    const response = await fetch(API_URL);
+
+    if (!response.ok) {
+      throw new Error(
+        `API returned ${response.status}`
+      );
+    }
+
+    const data = await response.json();
+
+    console.log("All API Wonders:", data);
+
+    /* =================================================
+        THE 7 ANCIENT WONDERS ONLY
+    ================================================= */
+
+    const ancientWonderNames = [
+      "Great Pyramid of Giza",
+      "Hanging Gardens of Babylon",
+      "Temple of Artemis",
+      "Statue of Zeus at Olympia",
+      "Mausoleum at Halicarnassus",
+      "Colossus of Rhodes",
+      "Lighthouse of Alexandria",
+    ];
+
+    /* =================================================
+        FILTER API DATA
+    ================================================= */
+
+    const ancientWonders = ancientWonderNames
+      .map((wantedName) => {
+
+        return data.find((wonder) => {
+
+          const apiName =
+            wonder.name?.toLowerCase() || "";
+
+          const targetName =
+            wantedName.toLowerCase();
+
+          return (
+            apiName.includes(targetName) ||
+            targetName.includes(apiName)
+          );
+
+        });
+
+      })
+      .filter(Boolean);
+
+
+    console.log(
+      "Ancient Seven Wonders:",
+      ancientWonders
+    );
+
+    /* =================================================
+        MAP API DATA TO OUR COMPONENT
+    ================================================= */
+
+    wonders.value =
+      ancientWonders.map(
+        (wonder, index) => {
+
+          const wonderName =
+            wonder.name ||
+            ancientWonderNames[index];
+
+          return {
+
+            /*
+             * Number
+             */
+
+            number:
+              String(index + 1)
+                .padStart(2, "0"),
+
+            /*
+             * Short title
+             */
+
+            shortTitle:
+              wonderName
+                .replace(/^The\s+/i, "")
+                .toUpperCase(),
+
+            /*
+             * Category
+             */
+
+            category:
+              "ANCIENT WORLD",
+
+            /*
+             * Main title
+             */
+
+            title:
+              wonderName.toUpperCase(),
+
+            /*
+             * Description
+             */
+
+            description:
+              wonder.summary ||
+              wonder.description ||
+              "No description available.",
+
+            /*
+             * Location
+             */
+
+            location:
+              typeof wonder.location === "string"
+                ? wonder.location.toUpperCase()
+                : wonder.location?.name
+                  ? wonder.location.name.toUpperCase()
+                  : "UNKNOWN LOCATION",
+
+            /*
+             * Construction year
+             */
+
+            built:
+              typeof wonder.build_year === "number"
+
+                ? wonder.build_year < 0
+
+                  ? `c. ${Math.abs(
+                      wonder.build_year
+                    )} BCE`
+
+                  : `c. ${wonder.build_year}`
+
+                : wonder.build_year ||
+                  "UNKNOWN",
+
+            /*
+             * Image
+             */
+
+            image:
+              wonder.links?.images?.[0] ||
+              wonder.image ||
+              "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368",
+
+            /*
+             * =========================================
+             * IMPORTANT
+             * =========================================
+             */
+
+            theme:
+              getWonderTheme(wonderName),
+
+          };
+
+        }
+      );
+
+
+    console.log(
+      "Mapped Wonders:",
+      wonders.value
+    );
+
+
+  } catch (err) {
+
+    console.error(
+      "Wonders API Error:",
+      err
+    );
+
+    error.value =
+      "Failed to load the ancient wonders.";
+
+  } finally {
+
+    loading.value = false;
+
+  }
+};
+
+/* =====================================================
+    SCROLL TO WONDERS
 ===================================================== */
 
 const scrollToWonders = () => {
-  const section = document.querySelector("#wonders");
+
+  const section =
+    document.querySelector("#wonders");
 
   if (!section) return;
 
   section.scrollIntoView({
     behavior: "smooth",
   });
+
 };
 
-
 /* =====================================================
-   HERO PARALLAX
+    HERO PARALLAX
 ===================================================== */
 
 const handleHeroParallax = () => {
-  const scroll = window.scrollY;
 
-  if (scroll > window.innerHeight) return;
+  const scroll =
+    window.scrollY;
 
-  heroOffset.value = scroll * 0.18;
+  if (
+    scroll >
+    window.innerHeight
+  ) {
+    return;
+  }
+
+  heroOffset.value =
+    scroll * 0.18;
+
 };
 
 
 /* =====================================================
-   MOUNT
+    MOUNT
 ===================================================== */
 
-onMounted(() => {
+onMounted(async () => {
+
+  /*
+    First get the data from the API
+  */
+
+  await fetchWonders();
+
+  /*
+    Wait until Vue renders
+    WonderSection components.
+  */
+
+  await nextTick();
+
+
+  /* ===================================================
+      INTERSECTION OBSERVER
+  =================================================== */
+
   const sections =
-    document.querySelectorAll(".wonder-section");
+    document.querySelectorAll(
+      ".wonder-section"
+    );
 
-  observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const number =
-            entry.target.id.replace(
-              "wonder-",
-              ""
-            );
 
-          activeWonder.value = number;
-        }
-      });
-    },
-    {
-      threshold: 0.55,
+  observer =
+    new IntersectionObserver(
+      (entries) => {
+
+        entries.forEach(
+          (entry) => {
+
+            if (
+              entry.isIntersecting
+            ) {
+
+              const number =
+                entry.target.id
+                  .replace(
+                    "wonder-",
+                    ""
+                  );
+
+              activeWonder.value =
+                number;
+
+            }
+
+          }
+        );
+
+      },
+      {
+        threshold: 0.55,
+      }
+    );
+
+
+  sections.forEach(
+    (section) => {
+
+      observer.observe(
+        section
+      );
+
     }
   );
 
-  sections.forEach((section) => {
-    observer.observe(section);
-  });
+
+  /* ===================================================
+      SCROLL EVENT
+  =================================================== */
 
   window.addEventListener(
     "scroll",
@@ -176,20 +418,23 @@ onMounted(() => {
       passive: true,
     }
   );
+
 });
 
 
 /* =====================================================
-   UNMOUNT
+    UNMOUNT
 ===================================================== */
 
 onUnmounted(() => {
+
   observer?.disconnect();
 
   window.removeEventListener(
     "scroll",
     handleHeroParallax
   );
+
 });
 </script>
 
@@ -202,14 +447,14 @@ onUnmounted(() => {
   >
 
     <!-- =========================
-         NAVBAR
+          NAVBAR
     ========================== -->
 
     <Navbar />
 
 
     <!-- =========================
-         HERO
+          HERO
     ========================== -->
 
     <section class="hero">
@@ -224,16 +469,13 @@ onUnmounted(() => {
         }"
       ></div>
 
-
       <!-- OVERLAY -->
 
       <div class="hero-overlay"></div>
 
-
       <!-- GLOW -->
 
       <div class="hero-glow"></div>
-
 
       <!-- CONTENT -->
 
@@ -254,13 +496,11 @@ onUnmounted(() => {
 
         </h1>
 
-
         <p class="hero-description">
           Explore the stories, civilizations, and remarkable
           achievements behind the world's most extraordinary
           wonders.
         </p>
-
 
         <!-- EXPLORE BUTTON -->
 
@@ -281,9 +521,8 @@ onUnmounted(() => {
 
       </div>
 
-
       <!-- =========================
-           SCROLL INDICATOR
+            SCROLL INDICATOR
       ========================== -->
 
       <div class="scroll-indicator">
@@ -296,12 +535,54 @@ onUnmounted(() => {
 
     </section>
 
-
     <!-- =========================
-         WONDERS
+          LOADING
     ========================== -->
 
-    <div id="wonders">
+    <section
+      v-if="loading"
+      class="status-section"
+    >
+
+      <div class="loader"></div>
+
+      <p>
+        LOADING WONDERS...
+      </p>
+
+    </section>
+
+
+    <!-- =========================
+          ERROR
+    ========================== -->
+
+    <section
+      v-else-if="error"
+      class="status-section error-section"
+    >
+
+      <p>
+        {{ error }}
+      </p>
+
+      <button
+        class="retry-button"
+        @click="fetchWonders"
+      >
+        TRY AGAIN
+      </button>
+
+    </section>
+
+    <!-- =========================
+          WONDERS
+    ========================= -->
+
+    <div
+      v-else
+      id="wonders"
+    >
 
       <WonderSection
         v-for="wonder in wonders"
@@ -319,68 +600,52 @@ onUnmounted(() => {
 <style scoped>
 
 /* =====================================================
-   HOME
+    HOME
 ===================================================== */
 
 .home {
   min-height: 100vh;
 }
 
-
 /* =====================================================
-   HERO
+    HERO
 ===================================================== */
 
 .hero {
   position: relative;
-
   min-height: 100vh;
-
   display: flex;
-
   align-items: center;
-
   overflow: hidden;
-
   isolation: isolate;
-
   background:
     #101820;
 }
 
-
 /* =====================================================
-   HERO BACKGROUND
+    HERO BACKGROUND
 ===================================================== */
 
 .hero-background {
   position: absolute;
-
   inset: -6%;
-
   z-index: -3;
-
   background:
     url(
       "https://images.unsplash.com/photo-1524492412937-b28074a5d7da"
     )
     center / cover no-repeat;
-
   will-change: transform;
 }
 
-
 /* =====================================================
-   HERO OVERLAY
+    HERO OVERLAY
 ===================================================== */
 
 .hero-overlay {
   position: absolute;
-
   inset: 0;
-
   z-index: -2;
-
   background:
     linear-gradient(
       90deg,
@@ -390,172 +655,129 @@ onUnmounted(() => {
     );
 }
 
-
 /* =====================================================
-   HERO GLOW
+    HERO GLOW
 ===================================================== */
 
 .hero-glow {
   position: absolute;
-
   width: 600px;
   height: 600px;
-
   right: -200px;
   top: 20%;
-
   border-radius: 50%;
-
   background:
     radial-gradient(
       circle,
       rgba(214, 184, 120, 0.22),
       transparent 70%
     );
-
   filter: blur(20px);
-
   pointer-events: none;
-
   animation:
     glowMove 8s ease-in-out infinite alternate;
 }
 
-
 /* =====================================================
-   HERO CONTENT
+    HERO CONTENT
 ===================================================== */
 
 .hero-content {
   position: relative;
-
   z-index: 2;
-
   width:
     min(
       86%,
       1400px
     );
-
   margin: auto;
 }
 
-
 /* =====================================================
-   HERO LABEL
+    HERO LABEL
 ===================================================== */
 
 .hero-label {
   margin-bottom: 24px;
-
   color:
     var(--color-sand);
-
   font-size: 15px;
-
   font-weight: 700;
-
   letter-spacing: 0.25em;
-
   animation:
     heroFade 1s 0.2s both;
 }
 
 
 /* =====================================================
-   HERO TITLE
+    HERO TITLE
 ===================================================== */
 
 .hero h1 {
   margin: 0;
-
   font-size:
     clamp(
       4rem,
       9vw,
       9rem
     );
-
   line-height: 0.9;
-
   font-weight: 800;
-
   letter-spacing: -0.06em;
-
   animation:
     heroTitle 1.1s 0.35s both;
 }
 
-
 .hero h1 span {
   display: block;
-
   color:
     var(--color-sand);
 }
 
-
 /* =====================================================
-   HERO DESCRIPTION
+    HERO DESCRIPTION
 ===================================================== */
 
 .hero-description {
   max-width: 650px;
-
   margin-top: 35px;
-
   color:
     var(--text-secondary);
-
   font-size:
     clamp(
       18px,
       2vw,
       22px
     );
-
   line-height: 1.7;
-
   animation:
     heroFade 1s 0.65s both;
 }
 
 
 /* =====================================================
-   EXPLORE BUTTON
+    EXPLORE BUTTON
 ===================================================== */
 
 .explore-button {
   display: inline-flex;
-
   align-items: center;
-
   gap: 20px;
-
   margin-top: 40px;
-
   padding:
     6px 6px 6px 25px;
-
   border:
     1px solid
     rgba(255, 255, 255, 0.4);
-
   border-radius: 999px;
-
   background:
     rgba(255, 255, 255, 0.03);
-
   color: white;
-
   cursor: pointer;
-
   backdrop-filter:
     blur(10px);
-
   animation:
     heroFade 1s 0.85s both;
-
   transition:
     background 0.4s ease,
     color 0.4s ease,
@@ -563,98 +785,67 @@ onUnmounted(() => {
     border-color 0.4s ease;
 }
 
-
 .explore-button:hover {
   background:
     var(--color-sand);
-
   border-color:
     var(--color-sand);
-
   color:
     var(--color-dark);
-
   transform:
     translateY(-5px);
 }
 
-
 .explore-button > span:first-child {
   font-size: 11px;
-
   font-weight: 700;
-
   letter-spacing: 0.16em;
 }
-
 
 .explore-arrow {
   width: 42px;
   height: 42px;
-
   display: grid;
-
   place-items: center;
-
   border-radius: 50%;
-
   background:
     var(--color-sand);
-
   color:
     var(--color-dark);
-
   font-size: 20px;
-
   transition:
     transform 0.4s ease;
 }
-
 
 .explore-button:hover
 .explore-arrow {
   transform:
     translateY(4px);
-
   background:
     var(--color-dark);
-
   color:
     var(--color-sand);
 }
 
-
 /* =====================================================
-   SCROLL INDICATOR
+    SCROLL INDICATOR
 ===================================================== */
 
 .scroll-indicator {
   position: absolute;
-
   left: 50%;
-
   bottom: 35px;
-
   z-index: 2;
-
   display: flex;
-
   align-items: center;
-
   gap: 12px;
-
   transform:
     translateX(-50%);
-
   color:
     rgba(255, 255, 255, 0.6);
-
   font-size: 11px;
-
   font-weight: 600;
-
   letter-spacing: 0.2em;
-
   animation:
     heroFade 1s 1.1s both;
 }
@@ -662,72 +853,134 @@ onUnmounted(() => {
 
 .scroll-indicator span {
   width: 1px;
-
   height: 45px;
-
   background:
     var(--color-sand);
-
   animation:
     scrollLine 1.8s ease-in-out infinite;
 }
 
 
 /* =====================================================
-   ANIMATIONS
+    API STATUS
+===================================================== */
+
+.status-section {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background:
+    var(--color-dark);
+  color: white;
+}
+
+
+.status-section p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color:
+    var(--color-sand);
+}
+
+
+/* =====================================================
+    LOADER
+===================================================== */
+
+.loader {
+  width: 50px;
+  height: 50px;
+  border:
+    3px solid
+    rgba(214, 184, 120, 0.2);
+  border-top-color:
+    var(--color-sand);
+  border-radius: 50%;
+  animation:
+    spin 0.8s linear infinite;
+}
+
+
+/* =====================================================
+    ERROR
+===================================================== */
+
+.error-section p {
+  color: #ff7777;
+}
+
+.retry-button {
+  padding:
+    12px 25px;
+  border:
+    1px solid
+    var(--color-sand);
+  border-radius: 999px;
+  background: transparent;
+  color:
+    var(--color-sand);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  transition:
+    all 0.3s ease;
+}
+
+.retry-button:hover {
+  background:
+    var(--color-sand);
+
+  color:
+    var(--color-dark);
+}
+
+/* =====================================================
+    ANIMATIONS
 ===================================================== */
 
 @keyframes heroFade {
-
   from {
     opacity: 0;
-
     transform:
       translateY(25px);
   }
 
   to {
     opacity: 1;
-
     transform:
       translateY(0);
   }
-
 }
 
-
 @keyframes heroTitle {
-
   from {
     opacity: 0;
-
     transform:
       translateY(50px);
-
     clip-path:
       inset(0 0 100% 0);
   }
 
   to {
     opacity: 1;
-
     transform:
       translateY(0);
-
     clip-path:
       inset(0 0 0 0);
   }
-
 }
 
-
 @keyframes scrollLine {
-
   0%,
   100% {
     transform:
       scaleY(0.4);
-
     transform-origin:
       top;
   }
@@ -735,16 +988,13 @@ onUnmounted(() => {
   50% {
     transform:
       scaleY(1);
-
     transform-origin:
       top;
   }
 
 }
 
-
 @keyframes glowMove {
-
   from {
     transform:
       translate(0, 0)
@@ -759,18 +1009,23 @@ onUnmounted(() => {
 
 }
 
+@keyframes spin {
+  to {
+    transform:
+      rotate(360deg);
+  }
+}
+
 
 /* =====================================================
-   RESPONSIVE
+    RESPONSIVE
 ===================================================== */
 
 @media (max-width: 768px) {
-
   .hero-background {
     background-position:
       65% center;
   }
-
 
   .hero h1 {
     font-size:
@@ -781,16 +1036,13 @@ onUnmounted(() => {
       );
   }
 
-
   .hero-description {
     font-size: 17px;
   }
 
-
   .scroll-indicator {
     display: none;
   }
-
 
   .hero-glow {
     width: 350px;
