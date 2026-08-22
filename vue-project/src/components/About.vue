@@ -279,7 +279,7 @@
 
           <div class="member-image">
             <img
-              src="../image/malak.jpeg"
+              src=""
               alt="Team Member"
             />
           </div>
@@ -307,7 +307,7 @@
 
           <div class="member-image">
             <img
-              src="../image/meram.jpeg"
+              src=""
               alt="Team Member"
             />
           </div>

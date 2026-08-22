@@ -29,6 +29,30 @@ let observer;
 const API_URL =
   "https://www.world-wonders-api.org/v0/wonders";
 
+/* =====================================================
+    WONDER coordinates
+===================================================== */
+
+const getCoordinates = (wonder) => {
+  const googleMapsUrl = wonder.links?.google_maps;
+
+  if (!googleMapsUrl) {
+    return null;
+  }
+
+  const match = googleMapsUrl.match(
+    /!3d(-?\d+(?:\.\d+)?)!4d(-?\d+(?:\.\d+)?)/
+  );
+
+  if (!match) {
+    return null;
+  }
+
+  return {
+    lat: Number(match[1]),
+    lng: Number(match[2]),
+  };
+};
 
 /* =====================================================
     WONDER THEMES
@@ -229,6 +253,8 @@ const fetchWonders = async () => {
                   ? wonder.location.name.toUpperCase()
                   : "UNKNOWN LOCATION",
 
+            coordinates:
+                getCoordinates(wonder),
             /*
              * Construction year
              */
