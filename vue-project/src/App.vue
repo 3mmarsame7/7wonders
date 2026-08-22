@@ -29,6 +29,30 @@ let observer;
 const API_URL =
   "https://www.world-wonders-api.org/v0/wonders";
 
+/* =====================================================
+    WONDER coordinates
+===================================================== */
+
+const getCoordinates = (wonder) => {
+  const googleMapsUrl = wonder.links?.google_maps;
+
+  if (!googleMapsUrl) {
+    return null;
+  }
+
+  const match = googleMapsUrl.match(
+    /!3d(-?\d+(?:\.\d+)?)!4d(-?\d+(?:\.\d+)?)/
+  );
+
+  if (!match) {
+    return null;
+  }
+
+  return {
+    lat: Number(match[1]),
+    lng: Number(match[2]),
+  };
+};
 
 /* =====================================================
     WONDER THEMES
@@ -229,6 +253,8 @@ const fetchWonders = async () => {
                   ? wonder.location.name.toUpperCase()
                   : "UNKNOWN LOCATION",
 
+            coordinates:
+                getCoordinates(wonder),
             /*
              * Construction year
              */
@@ -440,27 +466,18 @@ onUnmounted(() => {
 
 
 <template>
-
-  <main
-    id="top"
-    class="home"
-  >
-
+  <!-- Show home page content only when NOT on about page -->
+  <main v-if="$route.path !== '/about'" id="top" class="home">
     <!-- =========================
           NAVBAR
     ========================== -->
-
     <Navbar />
-
 
     <!-- =========================
           HERO
     ========================== -->
-
     <section class="hero">
-
       <!-- BACKGROUND -->
-
       <div
         class="hero-background"
         :style="{
@@ -470,30 +487,22 @@ onUnmounted(() => {
       ></div>
 
       <!-- OVERLAY -->
-
       <div class="hero-overlay"></div>
 
       <!-- GLOW -->
-
       <div class="hero-glow"></div>
 
       <!-- CONTENT -->
-
       <div class="hero-content">
-
         <p class="hero-label">
           A JOURNEY THROUGH HISTORY
         </p>
 
-
         <h1>
-
           WONDERS
-
           <span>
             OF THE WORLD
           </span>
-
         </h1>
 
         <p class="hero-description">
@@ -503,97 +512,68 @@ onUnmounted(() => {
         </p>
 
         <!-- EXPLORE BUTTON -->
-
         <button
           class="explore-button"
           @click="scrollToWonders"
         >
-
           <span>
             EXPLORE THE WONDERS
           </span>
-
           <span class="explore-arrow">
             ↓
           </span>
-
         </button>
-
       </div>
 
-      <!-- =========================
-            SCROLL INDICATOR
-      ========================== -->
-
+      <!-- SCROLL INDICATOR -->
       <div class="scroll-indicator">
-
         <span></span>
-
         SCROLL TO EXPLORE
-
       </div>
-
     </section>
 
-    <!-- =========================
-          LOADING
-    ========================== -->
-
+    <!-- LOADING -->
     <section
       v-if="loading"
       class="status-section"
     >
-
       <div class="loader"></div>
-
       <p>
         LOADING WONDERS...
       </p>
-
     </section>
 
-
-    <!-- =========================
-          ERROR
-    ========================== -->
-
+    <!-- ERROR -->
     <section
       v-else-if="error"
       class="status-section error-section"
     >
-
       <p>
         {{ error }}
       </p>
-
       <button
         class="retry-button"
         @click="fetchWonders"
       >
         TRY AGAIN
       </button>
-
     </section>
 
-    <!-- =========================
-          WONDERS
-    ========================= -->
-
+    <!-- WONDERS -->
     <div
       v-else
       id="wonders"
     >
-
       <WonderSection
         v-for="wonder in wonders"
         :key="wonder.number"
         v-bind="wonder"
       />
-
     </div>
-
   </main>
 
+  <!-- Show About page when on /about route -->
+  <router-view v-else />
 </template>
 
 
