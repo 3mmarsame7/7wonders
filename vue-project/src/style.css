@@ -1,0 +1,31 @@
+@import "./assets/variables.css";
+@import "./assets/global.css";
+@import "./assets/animations.css";
+
+/* =========================
+   CUSTOM SCROLLBAR
+========================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #101820;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-sand);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #e2c98f;
+}
+
+/* Firefox */
+
+html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-sand) #101820;
+}

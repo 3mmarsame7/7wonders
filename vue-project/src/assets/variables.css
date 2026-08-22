@@ -1,0 +1,27 @@
+:root {
+    --font-main: "Inter", sans-serif;
+
+    --color-dark: #101820;
+    --color-light: #f7f3ea;
+
+    --color-sand: #d6b878;
+    --color-gold: #c99b45;
+
+    --color-white: #ffffff;
+
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.72);
+
+    --section-padding: clamp(80px, 10vw, 160px);
+
+    --container-width: 1400px;
+
+    --radius-sm: 12px;
+    --radius-md: 24px;
+    --radius-lg: 40px;
+
+    --transition-fast: 0.3s ease;
+
+    --transition-medium:
+        0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
