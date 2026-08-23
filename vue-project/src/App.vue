@@ -14,6 +14,8 @@ import SearchFilter from "./components/SearchFilter.vue";
 import LandingPage from "./components/landingpage.vue";
 import About from "./components/About.vue";
 import Footer from "./components/Footer.vue";   
+import Footer from "./components/Footer.vue";
+
 
 
 /* =====================================================
@@ -571,6 +573,7 @@ onUnmounted(() => {
     <!-- =========================
           WONDERS
     ========================== -->
+
     <div v-else id="wonders">
       <WonderSection
         v-for="wonder in filteredWonders"
@@ -581,6 +584,30 @@ onUnmounted(() => {
         <h2>No Wonders Found</h2>
         <p>We couldn't find any wonder matching your search or location.</p>
       </div>
+
+    <div
+      v-else
+      id="wonders"
+    >
+
+      <WonderSection
+        v-for="wonder in wonders"
+        :key="wonder.number"
+        v-bind="wonder"
+      />
+      <Footer/>
+
+<div
+  v-if="filteredWonders.length === 0"
+  class="no-results"
+>
+  <h2>No Wonders Found</h2>
+
+  <p>
+    We couldn't find any wonder matching your search or location.
+  </p>
+
+</div>
     </div>
 
     <Footer />

@@ -6,6 +6,9 @@ import {
 } from "vue";
 
 
+import Navbar from "../components/Navbar.vue";
+import Footer from "../components/Footer.vue";
+
 const heroOffset = ref(0);
 
 /* =====================================================
@@ -135,7 +138,9 @@ onUnmounted(() => {
 
     </section>
 
+    <Footer/>
   </main>
+  
 </template>
 
 

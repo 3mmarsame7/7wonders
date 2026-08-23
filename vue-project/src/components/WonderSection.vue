@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted, onUnmounted, ref } from "vue";
+import Footer from "../components/Footer.vue"
 
 defineProps({
     number: {
@@ -181,6 +182,7 @@ onUnmounted(() => {
         <div class="section-line" :class="{ visible: isVisible }"></div>
 
     </section>
+
 </template>
 
 <style scoped>

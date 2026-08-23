@@ -1,6 +1,13 @@
+
 ```vue
 <script setup>
 import Navbar from "../components/Navbar.vue";
+</script>
+
+
+
+<script setup>
+import Footer from "../components/Footer.vue";
 </script>
 
 <template>
@@ -382,7 +389,10 @@ import Navbar from "../components/Navbar.vue";
 
     </footer>
 
+
   </div>
+  <Footer/>
+  
 </template>
 
 
