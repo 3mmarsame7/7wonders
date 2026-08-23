@@ -5,6 +5,7 @@ import {
   ref,
 } from "vue";
 
+
 import Navbar from "../components/Navbar.vue";
 import Footer from "../components/Footer.vue";
 
@@ -54,11 +55,6 @@ onUnmounted(() => {
 <template>
   <main id="top" class="home">
 
-    <!-- =========================
-          NAVBAR
-    ========================== -->
-
-    <Navbar />
 
 
     <!-- =========================
@@ -100,7 +96,7 @@ onUnmounted(() => {
         <h1>
           WONDERS
           <span>
-            OF THE WORLD
+            OF ANCIENT WORLD
           </span>
         </h1>
 
@@ -123,22 +119,13 @@ onUnmounted(() => {
           </span>
 
           <span class="explore-arrow">
-            ↓
+            ↗
           </span>
         </button>
 
       </div>
 
 
-      <!-- SCROLL INDICATOR -->
-
-      <div class="scroll-indicator">
-
-        <span></span>
-
-        SCROLL TO EXPLORE
-
-      </div>
 
     </section>
 
@@ -400,11 +387,11 @@ onUnmounted(() => {
 
 
 .explore-button > span:first-child {
-  font-size: 11px;
+  font-size: 15px;
 
-  font-weight: 700;
+  font-weight: 800;
 
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
 }
 
 
@@ -424,8 +411,9 @@ onUnmounted(() => {
   color:
     var(--color-dark);
 
-  font-size: 20px;
-
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1;
   transition:
     transform 0.4s ease;
 }
@@ -434,7 +422,7 @@ onUnmounted(() => {
 .explore-button:hover
 .explore-arrow {
   transform:
-    translateY(4px);
+    rotate(45deg);
 
   background:
     var(--color-dark);
