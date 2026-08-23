@@ -2,7 +2,7 @@
 [file name]: WonderSection.vue
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
-
+import ViewMap from "./viewMap.vue";
 const props = defineProps({
     number: { type: String, required: true },
     category: { type: String, required: true },
@@ -12,6 +12,10 @@ const props = defineProps({
     built: { type: String, required: true },
     image: { type: String, required: true },
     theme: { type: String, default: "sand" },
+    coordinates: {
+    type: Object,
+    default: null,
+},
 });
 
 // ------- الحالة لعرض التفاصيل (Modal) -------
@@ -229,6 +233,14 @@ onUnmounted(() => {
                         <span>BUILT</span>
                         <strong>{{ built }}</strong>
                     </div>
+                </div>
+
+                <!-- MAP -->
+                <div class="map-wrapper">
+                    <ViewMap
+                        :coordinates="coordinates"
+                        :title="title"
+                    />
                 </div>
             </div>
         </div>
@@ -492,5 +504,10 @@ onUnmounted(() => {
     .details-close { top: 15px; right: 15px; }
     .details-card h3 { font-size: 3rem; }
     .details-description { font-size: 16px; }
+}
+
+.map-wrapper {
+    grid-column: 1 / -1;
+    width: 100%;
 }
 </style>
