@@ -795,8 +795,8 @@ onUnmounted(() => {
 }
 
 .button-arrow {
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
 
     display: grid;
 
@@ -810,7 +810,9 @@ onUnmounted(() => {
     color:
         var(--section-bg);
 
-    font-size: 18px;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 1;
 
     transition:
         transform 0.4s cubic-bezier(0.22,
@@ -833,7 +835,9 @@ onUnmounted(() => {
 .discover-button:hover .button-arrow {
     transform:
         rotate(45deg);
-}
+    background: var(--color-sand);
+    color: var(--color-dark);
+    }
 
 
 /* =====================================================
