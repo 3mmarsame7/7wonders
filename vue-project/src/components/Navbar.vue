@@ -9,7 +9,7 @@
         </router-link>
 
         <nav class="desktop-nav">
-            <router-link to="/">HOME</router-link>
+            <router-link to="/wonders">HOME</router-link>
             <router-link to="/wonders">WONDERS</router-link>
             <router-link to="/about">ABOUT</router-link>
         </nav>

@@ -1,6 +1,16 @@
+
 ```vue
+<script setup>
+import Navbar from "../components/Navbar.vue";
+</script>
+
+
+
+
 <template>
   <div class="about-page">
+    <!-- ===== NAVBAR ===== -->
+    <Navbar />
 
     <!-- ================= HERO ================= -->
     <section class="hero">
@@ -279,7 +289,7 @@
 
           <div class="member-image">
             <img
-              src=""
+              src="../image/malak.jpeg"
               alt="Team Member"
             />
           </div>
@@ -307,7 +317,7 @@
 
           <div class="member-image">
             <img
-              src=""
+              src="../image/meram.jpeg"
               alt="Team Member"
             />
           </div>
@@ -376,7 +386,10 @@
 
     </footer>
 
+
   </div>
+  <Footer/>
+  
 </template>
 
 
