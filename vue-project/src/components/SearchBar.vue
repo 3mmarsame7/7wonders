@@ -5,7 +5,7 @@ const emit = defineEmits(["search"]);
 
 const searchQuery = ref("");
 
-const handleSearch = () => {
+const handleSearch = () => { 
     emit("search", searchQuery.value);
 };
 </script>

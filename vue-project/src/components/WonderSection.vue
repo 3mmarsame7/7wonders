@@ -483,6 +483,8 @@ onUnmounted(() => {
     </section>
 
 </template>
+
+
 <style scoped>
 
 /* =====================================================
@@ -528,7 +530,7 @@ onUnmounted(() => {
 
     transition:
         background 0.8s ease,
-        color 0.8s ease;
+        color 0.8s ease; 
 }
 
 
