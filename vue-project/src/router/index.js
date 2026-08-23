@@ -7,7 +7,7 @@ import StatueOfZeus from "../components/StatueOfZeus.vue";
 import Mausoleum from "../components/Mausoleum.vue";
 import ColossusOfRhodes from "../components/ColossusOfRhodes.vue";
 import LighthouseOfAlexandria from "../components/LighthouseOfAlexandria.vue";
-
+import WonderFinderPage from "../views/WonderFinderPage.vue";
 const routes = [
   {
     path: "/wonders/great-pyramid",
@@ -36,7 +36,11 @@ const routes = [
   {
     path: "/wonders/lighthouse-of-alexandria",
     component: LighthouseOfAlexandria
-  }
+  },
+  {
+  path: "/match",
+  component: WonderFinderPage
+}
 ];
 
 const router = createRouter({
