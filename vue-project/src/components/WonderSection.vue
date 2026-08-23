@@ -452,7 +452,6 @@ onUnmounted(() => {
     cursor: pointer;
     transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
-}
 .details-close:hover { background: var(--section-text); color: var(--section-bg); transform: rotate(90deg); }
 
 .details-label { margin: 0 0 18px; color: var(--section-accent); font-size: 11px; font-weight: 700; letter-spacing: 0.25em; }
