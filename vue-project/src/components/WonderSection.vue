@@ -436,11 +436,22 @@ onUnmounted(() => {
     animation: detailsAppear 0.4s ease;
 }
 .details-close {
-    position: absolute; top: 22px; right: 22px;
-    width: 44px; height: 44px; display: grid; place-items: center;
-    border: 1px solid var(--section-text); border-radius: 50%;
-    background: transparent; color: var(--section-text); font-size: 25px; line-height: 1;
-    cursor: pointer; transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--section-text);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--section-text);
+    font-size: 25px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
 }
 .details-close:hover { background: var(--section-text); color: var(--section-bg); transform: rotate(90deg); }
 
@@ -465,9 +476,22 @@ onUnmounted(() => {
 .details-info span { color: var(--section-muted); font-size: 10px; font-weight: 700; letter-spacing: 0.2em; }
 .details-info strong { color: var(--section-text); font-size: 14px; line-height: 1.5; letter-spacing: 0.04em; }
 
+.discover-button:hover .button-arrow {
+    transform: rotate(45deg);
+    background: var(--section-bg);
+    color: var(--section-text);
+}
+
 @keyframes detailsAppear {
-    from { opacity: 0; transform: translateY(30px) scale(0.96); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 .section-line {

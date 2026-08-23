@@ -9,7 +9,7 @@
         </router-link>
 
         <nav class="desktop-nav">
-            <router-link to="/wonders">HOME</router-link>
+            <router-link to="/">HOME</router-link>
             <router-link to="/wonders">WONDERS</router-link>
             <router-link to="/about">ABOUT</router-link>
         </nav>
@@ -82,9 +82,10 @@ onUnmounted(() => {
 
 .navbar.scrolled {
     height: 74px;
-    background: rgba(12, 17, 22, 0.9);
-    backdrop-filter: blur(16px);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    background:  rgba(12, 17, 22, 0.45);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
 }
 
 
