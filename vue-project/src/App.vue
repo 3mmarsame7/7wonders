@@ -11,6 +11,8 @@ import {
 import Navbar from "./components/Navbar.vue";
 import WonderSection from "./components/WonderSection.vue";
 import SearchFilter from "./components/SearchFilter.vue";
+import Footer from "./components/Footer.vue";
+
 
 
 /* =====================================================
@@ -602,11 +604,12 @@ onUnmounted(() => {
       id="wonders"
     >
 
-  <WonderSection
-    v-for="wonder in filteredWonders"
-    :key="wonder.number"
-    v-bind="wonder"
-  />
+      <WonderSection
+        v-for="wonder in wonders"
+        :key="wonder.number"
+        v-bind="wonder"
+      />
+      <Footer/>
 
 <div
   v-if="filteredWonders.length === 0"
