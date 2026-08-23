@@ -1,5 +1,11 @@
 
 import { createRouter, createWebHistory } from "vue-router";
+
+import LandingPage from "../components/landingpage.vue";
+import WondersPage from "../App.vue";
+import About from "../components/About.vue";
+
+
 import GreatPyramid from "../components/GreatPyramid.vue";
 import HangingGardens from "../components/HangingGarden.vue";
 import TempleOfArtemis from "../components/TempleOfArtemis.vue";
@@ -10,38 +16,73 @@ import LighthouseOfAlexandria from "../components/LighthouseOfAlexandria.vue";
 import WonderFinderPage from "../views/WonderFinderPage.vue";
 const routes = [
   {
-    path: "/wonders/great-pyramid",
-    component: GreatPyramid
-  },
+      path: "/",
+      name: "landing",
+      component: LandingPage
+    },
+
+    {
+      path: "/wonders",
+      name: "wonders",
+      component: WondersPage
+    },
+
+    {
+      path: "/about",
+      name: "about",
+      component: About
+    },
+
   {
-    path: "/wonders/hanging-gardens",
-    component: HangingGardens
-  },
+      path: "/wonder/great-pyramid",
+      name: "great-pyramid",
+      component: GreatPyramid
+    },
+
   {
-    path: "/wonders/temple-of-artemis",
-    component: TempleOfArtemis
-  },
+      path: "/wonder/hanging-gardens",
+      name: "hanging-gardens",
+      component: HangingGardens
+    },
+
   {
-    path: "/wonders/statue-of-zeus",
-    component: StatueOfZeus
-  },
+      path: "/wonder/temple-of-artemis",
+      name: "temple-of-artemis",
+      component: TempleOfArtemis
+    },
+
   {
-    path: "/wonders/mausoleum",
-    component: Mausoleum
-  },
+      path: "/wonder/statue-of-zeus",
+      name: "statue-of-zeus",
+      component: StatueOfZeus
+    },
+
   {
-    path: "/wonders/colossus-of-rhodes",
+      path: "/wonder/mausoleum",
+      name: "mausoleum",
+      component: Mausoleum
+    },
+
+  {
+  {
+    path: "/wonder/colossus-of-rhodes",
+    name: "colossus-of-rhodes",
     component: ColossusOfRhodes
   },
+
   {
-    path: "/wonders/lighthouse-of-alexandria",
+    path: "/wonder/lighthouse-of-alexandria",
+    name: "lighthouse-of-alexandria",
     component: LighthouseOfAlexandria
   },
+
   {
-  path: "/match",
-  component: WonderFinderPage
-}
+    path: "/match",
+    component: WonderFinderPage
+  }
 ];
+
+console.log('🔍 All Routes:', routes.map(r => r.path));
 
 const router = createRouter({
   history: createWebHistory(),

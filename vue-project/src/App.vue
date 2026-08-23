@@ -216,7 +216,7 @@ onUnmounted(() => observer?.disconnect());
   />
 
   <!-- ====================== FALLBACK ====================== -->
-  <LandingPage v-else />
+  <router-view v-else />
 </template>
 
 <style scoped>
