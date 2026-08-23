@@ -13,7 +13,6 @@ import WonderSection from "./components/WonderSection.vue";
 import SearchFilter from "./components/SearchFilter.vue";
 import LandingPage from "./components/landingpage.vue";
 import About from "./components/About.vue";
-import Footer from "./components/Footer.vue";   
 import Footer from "./components/Footer.vue";
 
 
@@ -260,9 +259,7 @@ const fetchWonders = async () => {
       ancientWonderNames
 
         .map((wantedName) => {
-
           return data.find((wonder) => {
-
             const apiName =
               wonder.name?.toLowerCase() || "";
 
@@ -383,13 +380,13 @@ const fetchWonders = async () => {
                 ? wonder.build_year < 0
 
                   ? `c. ${Math.abs(
-                      wonder.build_year
-                    )} BCE`
+                    wonder.build_year
+                  )} BCE`
 
                   : `c. ${wonder.build_year}`
 
                 : wonder.build_year ||
-                  "UNKNOWN",
+                "UNKNOWN",
 
 
             /*
@@ -549,10 +546,7 @@ onUnmounted(() => {
     <!-- =========================
           SearchAndFilter
     ========================== -->
-    <SearchFilter
-      :locations="locations"
-      @filter-change="handleFilterChange"
-    />
+    <SearchFilter :locations="locations" @filter-change="handleFilterChange" />
 
     <!-- =========================
           LOADING
@@ -575,42 +569,19 @@ onUnmounted(() => {
     ========================== -->
 
     <div v-else id="wonders">
-      <WonderSection
-        v-for="wonder in filteredWonders"
-        :key="wonder.number"
-        v-bind="wonder"
-      />
+      <WonderSection v-for="wonder in filteredWonders" :key="wonder.number" v-bind="wonder" />
       <div v-if="filteredWonders.length === 0" class="no-results">
         <h2>No Wonders Found</h2>
         <p>We couldn't find any wonder matching your search or location.</p>
       </div>
 
-    <div
-      v-else
-      id="wonders"
-    >
+      <div v-else id="wonders">
 
-      <WonderSection
-        v-for="wonder in wonders"
-        :key="wonder.number"
-        v-bind="wonder"
-      />
-      <Footer/>
+        <Footer />
 
-<div
-  v-if="filteredWonders.length === 0"
-  class="no-results"
->
-  <h2>No Wonders Found</h2>
+      </div>
 
-  <p>
-    We couldn't find any wonder matching your search or location.
-  </p>
-
-</div>
     </div>
-
-    <Footer />
   </main>
 
   <!-- ====================== ABOUT PAGE ====================== -->
@@ -622,7 +593,6 @@ onUnmounted(() => {
 
 
 <style scoped>
-
 /* =====================================================
    WONDERS PAGE
 ===================================================== */
@@ -685,8 +655,7 @@ onUnmounted(() => {
   height: 50px;
 
   border:
-    3px solid
-    rgba(214, 184, 120, 0.2);
+    3px solid rgba(214, 184, 120, 0.2);
 
   border-top-color:
     var(--color-sand);
@@ -714,8 +683,7 @@ onUnmounted(() => {
     12px 25px;
 
   border:
-    1px solid
-    var(--color-sand);
+    1px solid var(--color-sand);
 
   border-radius: 999px;
 
@@ -784,6 +752,4 @@ onUnmounted(() => {
   color: #5e574e;
   font-size: 16px;
 }
-
-
 </style>
