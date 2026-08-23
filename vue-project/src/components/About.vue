@@ -6,9 +6,6 @@ import Navbar from "../components/Navbar.vue";
 
 
 
-<script setup>
-import Footer from "../components/Footer.vue";
-</script>
 
 <template>
   <div class="about-page">
