@@ -15,6 +15,7 @@ import SearchFilter from "./components/SearchFilter.vue";
 import LandingPage from "./components/landingpage.vue";
 import About from "./components/About.vue";
 import Footer from "./components/Footer.vue";
+import WonderFinderPage from "./views/WonderFinderPage.vue";
 
 /* =====================================================
    STATE
@@ -207,6 +208,12 @@ onUnmounted(() => observer?.disconnect());
 
   <!-- ====================== ABOUT PAGE ====================== -->
   <About v-else-if="$route.path === '/about'" />
+
+  <!-- ====================== MATCH PAGE ====================== -->
+  <WonderFinderPage
+    v-else-if="$route.path === '/match'"
+    :wonders="wonders"
+  />
 
   <!-- ====================== FALLBACK ====================== -->
   <LandingPage v-else />

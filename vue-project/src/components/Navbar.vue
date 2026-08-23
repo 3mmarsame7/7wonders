@@ -11,6 +11,7 @@
         <nav class="desktop-nav">
             <router-link to="/">HOME</router-link>
             <router-link to="/wonders">WONDERS</router-link>
+            <router-link to="/match">MY MATCH</router-link>
             <router-link to="/about">ABOUT</router-link>
         </nav>
 
@@ -23,6 +24,7 @@
         <div class="mobile-menu" :class="{ open: menuOpen }">
             <router-link to="/" @click="closeMenu">HOME</router-link>
             <router-link to="/wonders" @click="closeMenu">WONDERS</router-link>
+            <router-link to="/match" @click="closeMenu">MY MATCH</router-link>
             <router-link to="/about" @click="closeMenu">ABOUT</router-link>
         </div>
     </header>
