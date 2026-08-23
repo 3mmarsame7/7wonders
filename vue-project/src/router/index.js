@@ -13,7 +13,7 @@ import StatueOfZeus from "../components/StatueOfZeus.vue";
 import Mausoleum from "../components/Mausoleum.vue";
 import ColossusOfRhodes from "../components/ColossusOfRhodes.vue";
 import LighthouseOfAlexandria from "../components/LighthouseOfAlexandria.vue";
-
+import WonderFinderPage from "../views/WonderFinderPage.vue";
 const routes = [
   {
       path: "/",
@@ -64,18 +64,22 @@ const routes = [
     },
 
   {
-      path: "/wonder/colossus-of-rhodes",
-      name: "colossus-of-rhodes",
-      component: ColossusOfRhodes
-    },
+  {
+    path: "/wonder/colossus-of-rhodes",
+    name: "colossus-of-rhodes",
+    component: ColossusOfRhodes
+  },
 
   {
-      path: "/wonder/lighthouse-of-alexandria",
-      name: "lighthouse-of-alexandria",
-      component: LighthouseOfAlexandria
-    },
+    path: "/wonder/lighthouse-of-alexandria",
+    name: "lighthouse-of-alexandria",
+    component: LighthouseOfAlexandria
+  },
 
-    
+  {
+    path: "/match",
+    component: WonderFinderPage
+  }
 ];
 
 console.log('🔍 All Routes:', routes.map(r => r.path));

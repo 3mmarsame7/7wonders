@@ -15,6 +15,7 @@ import SearchFilter from "./components/SearchFilter.vue";
 import LandingPage from "./components/landingpage.vue";
 import About from "./components/About.vue";
 import Footer from "./components/Footer.vue";
+import WonderFinderPage from "./views/WonderFinderPage.vue";
 
 /* =====================================================
    STATE
@@ -72,7 +73,21 @@ const getWonderTheme = (name) => {
   if (title.includes("lighthouse") || title.includes("alexandria")) return "sunset";
   return "sand";
 };
+/* =====================================================
+   WONDER Map
+===================================================== */
+const getCoordinatesFromGoogleMaps = (url) => {
+  if (!url) return null;
 
+  const match = url.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/);
+
+  if (!match) return null;
+
+  return {
+    lat: Number(match[1]),
+    lng: Number(match[2]),
+  };
+};
 /* =====================================================
    FETCH WONDERS
 ===================================================== */
@@ -118,6 +133,7 @@ const fetchWonders = async () => {
         built: typeof wonder.build_year === "number" ? (wonder.build_year < 0 ? `c. ${Math.abs(wonder.build_year)} BCE` : `c. ${wonder.build_year}`) : wonder.build_year || "UNKNOWN",
         image: wonder.links?.images?.[0] || wonder.image || "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368",
         theme: getWonderTheme(wonderName),
+        coordinates: getCoordinatesFromGoogleMaps(wonder.links?.google_maps),
       };
     });
   } catch (err) {
@@ -192,6 +208,12 @@ onUnmounted(() => observer?.disconnect());
 
   <!-- ====================== ABOUT PAGE ====================== -->
   <About v-else-if="$route.path === '/about'" />
+
+  <!-- ====================== MATCH PAGE ====================== -->
+  <WonderFinderPage
+    v-else-if="$route.path === '/match'"
+    :wonders="wonders"
+  />
 
   <!-- ====================== FALLBACK ====================== -->
   <router-view v-else />
