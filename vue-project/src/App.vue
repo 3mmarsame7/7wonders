@@ -27,7 +27,7 @@ let observer;
 ===================================================== */
 
 const API_URL =
-  "https://www.world-wonders-api.org/v0/wonders";
+  "https://www.world-wonders-api.org/v0/wonders"; 
 
 
 /* =====================================================
