@@ -5,11 +5,14 @@ import {
   onUnmounted,
   ref,
   nextTick,
+  computed,
 } from "vue";
 
 import Navbar from "./components/Navbar.vue";
 import WonderSection from "./components/WonderSection.vue";
+import SearchFilter from "./components/SearchFilter.vue";
 import Footer from "./components/Footer.vue";
+
 
 
 /* =====================================================
@@ -23,6 +26,43 @@ const wonders = ref([]);
 const loading = ref(true);
 
 const error = ref(null);
+
+const searchQuery = ref("");
+const selectedLocation = ref("");
+const filteredWonders = computed(() => {
+  return wonders.value.filter((wonder) => {
+
+    const search = searchQuery.value
+      .toLowerCase()
+      .trim();
+
+    const matchesSearch =
+      !search ||
+      wonder.title.toLowerCase().includes(search) ||
+      wonder.location.toLowerCase().includes(search);
+
+    const matchesLocation =
+      !selectedLocation.value ||
+      wonder.location === selectedLocation.value;
+
+    return matchesSearch && matchesLocation;
+  });
+});
+
+const locations = computed(() => {
+  return [
+    ...new Set(
+      wonders.value.map(
+        (wonder) => wonder.location
+      )
+    ),
+  ];
+});
+
+const handleFilterChange = (filters) => {
+  searchQuery.value = filters.search;
+  selectedLocation.value = filters.location;
+};
 
 let observer;
 
@@ -502,6 +542,14 @@ onUnmounted(() => {
 
     <Navbar />
 
+    <!-- =========================
+          SearchAndFilter
+    ========================== -->
+    <SearchFilter
+    :locations="locations"
+    @filter-change="handleFilterChange"
+   />
+
 
     <!-- =========================
          LOADING
@@ -561,8 +609,19 @@ onUnmounted(() => {
         :key="wonder.number"
         v-bind="wonder"
       />
-      <Footer />
+      <Footer/>
 
+<div
+  v-if="filteredWonders.length === 0"
+  class="no-results"
+>
+  <h2>No Wonders Found</h2>
+
+  <p>
+    We couldn't find any wonder matching your search or location.
+  </p>
+
+</div>
     </div>
 
   </main>
@@ -710,5 +769,29 @@ onUnmounted(() => {
   }
 
 }
+
+.no-results {
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 20px;
+  background: #f1e8d5;
+  color: #17130e;
+}
+
+.no-results h2 {
+  margin: 0 0 15px;
+  font-size: 36px;
+}
+
+.no-results p {
+  margin: 0 0 25px;
+  color: #5e574e;
+  font-size: 16px;
+}
+
 
 </style>
