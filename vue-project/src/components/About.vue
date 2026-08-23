@@ -1,9 +1,19 @@
 
+```vue
+<script setup>
+import Navbar from "../components/Navbar.vue";
+</script>
+
+
+
 <script setup>
 import Footer from "../components/Footer.vue";
 </script>
+
 <template>
   <div class="about-page">
+    <!-- ===== NAVBAR ===== -->
+    <Navbar />
 
     <!-- ================= HERO ================= -->
     <section class="hero">

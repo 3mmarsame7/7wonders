@@ -1,17 +1,22 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import App from '../App.vue'
-
-//import Wonders from '../views/Wonders.vue'
-//import WonderDetails from '../views/WonderDetails.vue'
+import LandingPage from '../components/landingpage.vue'
 import About from '../components/About.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
+      name: 'landing',
+      component: LandingPage
+    },
+
+    {
+      path: '/wonders',
       name: 'home',
-      component: App
+      component: App  // Home page with wonders
     },
     //{
      // path: '/wonders',
