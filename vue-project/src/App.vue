@@ -11,6 +11,9 @@ import {
 import Navbar from "./components/Navbar.vue";
 import WonderSection from "./components/WonderSection.vue";
 import SearchFilter from "./components/SearchFilter.vue";
+import LandingPage from "./components/landingpage.vue";
+import About from "./components/About.vue";
+import Footer from "./components/Footer.vue";   
 
 
 /* =====================================================
@@ -531,98 +534,63 @@ onUnmounted(() => {
 
 
 <template>
+  <!-- ====================== LANDING PAGE ====================== -->
+  <LandingPage v-if="$route.path === '/'" />
 
-  <main class="wonders-page">
-
+  <!-- ====================== WONDERS PAGE ====================== -->
+  <main v-else-if="$route.path === '/wonders'" class="wonders-page">
     <!-- =========================
-         NAVBAR
+          NAVBAR
     ========================== -->
-
     <Navbar />
 
     <!-- =========================
           SearchAndFilter
     ========================== -->
     <SearchFilter
-    :locations="locations"
-    @filter-change="handleFilterChange"
-   />
-
+      :locations="locations"
+      @filter-change="handleFilterChange"
+    />
 
     <!-- =========================
-         LOADING
+          LOADING
     ========================== -->
-
-    <section
-      v-if="loading"
-      class="status-section"
-    >
-
+    <section v-if="loading" class="status-section">
       <div class="loader"></div>
-
-      <p>
-        LOADING WONDERS...
-      </p>
-
+      <p>LOADING WONDERS...</p>
     </section>
 
-
     <!-- =========================
-         ERROR
+          ERROR
     ========================== -->
-
-    <section
-      v-else-if="error"
-      class="status-section error-section"
-    >
-
-      <p>
-        {{ error }}
-      </p>
-
-
-      <button
-        class="retry-button"
-        @click="fetchWonders"
-      >
-
-        TRY AGAIN
-
-      </button>
-
+    <section v-else-if="error" class="status-section error-section">
+      <p>{{ error }}</p>
+      <button class="retry-button" @click="fetchWonders">TRY AGAIN</button>
     </section>
 
-
     <!-- =========================
-         WONDERS
+          WONDERS
     ========================== -->
-
-    <div
-      v-else
-      id="wonders"
-    >
-
-  <WonderSection
-    v-for="wonder in filteredWonders"
-    :key="wonder.number"
-    v-bind="wonder"
-  />
-
-<div
-  v-if="filteredWonders.length === 0"
-  class="no-results"
->
-  <h2>No Wonders Found</h2>
-
-  <p>
-    We couldn't find any wonder matching your search or location.
-  </p>
-
-</div>
+    <div v-else id="wonders">
+      <WonderSection
+        v-for="wonder in filteredWonders"
+        :key="wonder.number"
+        v-bind="wonder"
+      />
+      <div v-if="filteredWonders.length === 0" class="no-results">
+        <h2>No Wonders Found</h2>
+        <p>We couldn't find any wonder matching your search or location.</p>
+      </div>
     </div>
 
+    <Footer />
   </main>
 
+  <!-- ====================== ABOUT PAGE ====================== -->
+  <About v-else-if="$route.path === '/about'" />
+
+  <!-- ====================== FALLBACK ====================== -->
+  <LandingPage v-else />
 </template>
 
 

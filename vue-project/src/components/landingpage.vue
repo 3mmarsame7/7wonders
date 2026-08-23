@@ -5,7 +5,6 @@ import {
   ref,
 } from "vue";
 
-import Navbar from "../components/Navbar.vue";
 
 const heroOffset = ref(0);
 
@@ -53,11 +52,6 @@ onUnmounted(() => {
 <template>
   <main id="top" class="home">
 
-    <!-- =========================
-          NAVBAR
-    ========================== -->
-
-    <Navbar />
 
 
     <!-- =========================
