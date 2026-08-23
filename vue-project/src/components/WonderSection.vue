@@ -2,6 +2,10 @@
 [file name]: WonderSection.vue
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
 
 const props = defineProps({
     number: { type: String, required: true },
@@ -14,67 +18,35 @@ const props = defineProps({
     theme: { type: String, default: "sand" },
 });
 
-// ------- الحالة لعرض التفاصيل (Modal) -------
-const showDetails = ref(false);
+const goToWonderPage = () => {
+    const slug = props.title
+    .toLowerCase()
+    .replace(/ at /g, '-')
+    .replace(/ of /g, '-')
+    .replace(/ the /g, '-')
+    .replace(/[^a-z0-9-]/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
 
-// ------- بيانات تفصيلية لكل عجيبة -------
-const wonderDetails = {
-    "GREAT PYRAMID OF GIZA": {
-        history: "The Great Pyramid of Giza was built as a monumental tomb for Pharaoh Khufu around 2560 BCE. It is the oldest and largest of the three pyramids at Giza.",
-        whyWonder: "It was considered one of the greatest achievements of ancient engineering and was the only Ancient Wonder to survive largely intact.",
-        disappeared: "It did not disappear. The Great Pyramid still stands in Giza today.",
-        extraFacts: "The pyramid was the tallest man-made structure in the world for over 3,800 years."
-    },
-    "HANGING GARDENS OF BABYLON": {
-        history: "The Hanging Gardens are traditionally described as a spectacular series of elevated gardens associated with ancient Babylon, possibly built by King Nebuchadnezzar II around 600 BCE.",
-        whyWonder: "Their extraordinary terraces, advanced irrigation systems, and legendary beauty made them one of the Seven Wonders.",
-        disappeared: "Their exact location and existence remain uncertain, with no definitive archaeological evidence.",
-        extraFacts: "The gardens were described as being built with a complex system of water pumps to irrigate the plants."
-    },
-    "TEMPLE OF ARTEMIS AT EPHESUS": {
-        history: "The Temple of Artemis at Ephesus was a massive Greek temple dedicated to the goddess Artemis, built around 550 BCE. It was one of the largest temples in the ancient world.",
-        whyWonder: "Its enormous scale, stunning architecture, and artistic decoration made it one of the greatest temples of the ancient world.",
-        disappeared: "The temple was destroyed and rebuilt several times before finally disappearing.",
-        extraFacts: "The temple was so large that it was said to have taken over 100 years to build."
-    },
-    "STATUE OF ZEUS AT OLYMPIA": {
-        history: "The Statue of Zeus was a monumental seated statue created by the Greek sculptor Phidias around 435 BCE. It stood inside the Temple of Zeus at Olympia.",
-        whyWonder: "Its enormous size, craftsmanship, and use of precious materials made it one of the greatest artistic achievements of its time.",
-        disappeared: "The statue was eventually lost and is believed to have been destroyed by fire.",
-        extraFacts: "The statue was made of ivory and gold over a wooden framework."
-    },
-    "MAUSOLEUM AT HALICARNASSUS": {
-        history: "The Mausoleum was a monumental tomb built for Mausolus, ruler of Caria, around 350 BCE. It was designed by Greek architects.",
-        whyWonder: "Its architecture and sculptural decoration became so famous that the word mausoleum came to describe monumental tombs.",
-        disappeared: "A series of earthquakes damaged the structure and eventually left it in ruins.",
-        extraFacts: "The Mausoleum stood for over 1,500 years before being destroyed."
-    },
-    "COLOSSUS OF RHODES": {
-        history: "The Colossus was a gigantic bronze statue dedicated to the sun god Helios, built around 280 BCE. It stood near the harbor of Rhodes.",
-        whyWonder: "Its enormous scale and engineering were extraordinary achievements for the ancient world.",
-        disappeared: "A powerful earthquake caused the statue to collapse around 226 BCE.",
-        extraFacts: "The statue was approximately 33 meters tall, making it one of the largest statues of the ancient world."
-    },
-    "LIGHTHOUSE OF ALEXANDRIA": {
-        history: "The Lighthouse of Alexandria was built on the island of Pharos around 280 BCE to guide ships safely into Alexandria's harbor.",
-        whyWonder: "It was one of the tallest structures of the ancient world and became an important symbol of Alexandria.",
-        disappeared: "Several earthquakes damaged the lighthouse until its remaining structure disappeared.",
-        extraFacts: "The lighthouse was estimated to be over 100 meters tall and could be seen from far away."
-    }
-};
-
-// ممكن نحط هنا اسم "TEMPLE OF ARTEMIS" بدل "TEMPLE OF ARTEMIS AT EPHESUS" لو الـ API بيرجعه كده
-// عشان كده بنعمل fallback لو الاسم مش موجود
-const getDetails = () => {
-    return wonderDetails[props.title] || {
-        history: props.description,
-        whyWonder: "This monument was considered one of the greatest achievements of the ancient world.",
-        disappeared: "Historical information is currently unavailable.",
-        extraFacts: "This is one of the Seven Wonders of the Ancient World."
+    const slugMap = {
+        'great pyramid of giza': 'great-pyramid',
+        'hanging gardens of babylon': 'hanging-gardens',
+        'temple of artemis': 'temple-of-artemis',
+        'temple of artemis at ephesus': 'temple-of-artemis',
+        'statue of zeus at olympia': 'statue-of-zeus',
+        'mausoleum at halicarnassus': 'mausoleum',
+        'colossus of rhodes': 'colossus-of-rhodes',
+        'lighthouse of alexandria': 'lighthouse-of-alexandria'
     };
+
+    const finalSlug = slugMap[props.title.toLowerCase()] || slug;
+
+
+    router.push(`/wonder/${finalSlug}`);
 };
 
-const details = getDetails();
+
+
 
 // ------- Scroll Animation -------
 const sectionRef = ref(null);
@@ -164,8 +136,8 @@ onUnmounted(() => {
             <button
                 class="discover-button reveal-item delay-5"
                 :class="{ visible: isVisible }"
-                @click="showDetails = true"
-            >
+                @click="goToWonderPage" >
+
                 <span>DISCOVER MORE</span>
                 <div class="button-arrow">↗</div>
             </button>
@@ -174,64 +146,6 @@ onUnmounted(() => {
         <!-- BOTTOM LINE -->
         <div class="section-line" :class="{ visible: isVisible }"></div>
 
-        <!-- =====================================================
-             DETAILS MODAL (نافذة التفاصيل - بتظهر فوق الصفحة)
-        ====================================================== -->
-        <div v-if="showDetails" class="details-overlay" @click.self="showDetails = false">
-            <div class="details-card">
-                <button class="details-close" @click="showDetails = false">×</button>
-
-                <!-- LABEL -->
-                <p class="details-label">ANCIENT WORLD</p>
-
-                <!-- TITLE -->
-                <h3>{{ title }}</h3>
-
-                <!-- DESCRIPTION -->
-                <p class="details-description">{{ description }}</p>
-
-                <!-- HISTORY -->
-                <div class="history-content">
-                    <div class="history-item">
-                        <span>HISTORY</span>
-                        <p>{{ details.history }}</p>
-                    </div>
-
-                    <div class="history-item">
-                        <span>WHY A WONDER?</span>
-                        <p>{{ details.whyWonder }}</p>
-                    </div>
-
-                    <div class="history-item">
-                        <span>WHAT HAPPENED TO IT?</span>
-                        <p>{{ details.disappeared }}</p>
-                    </div>
-
-                    <div class="history-item">
-                        <span>DID YOU KNOW?</span>
-                        <p>{{ details.extraFacts }}</p>
-                    </div>
-                </div>
-
-                <!-- INFORMATION -->
-                <div class="details-info">
-                    <div>
-                        <span>WONDER</span>
-                        <strong>{{ number }} / 07</strong>
-                    </div>
-
-                    <div>
-                        <span>LOCATION</span>
-                        <strong>{{ location }}</strong>
-                    </div>
-
-                    <div>
-                        <span>BUILT</span>
-                        <strong>{{ built }}</strong>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 </template>
 
@@ -411,52 +325,7 @@ onUnmounted(() => {
 /* =====================================================
    DETAILS OVERLAY (المودال)
 ===================================================== */
-.details-overlay {
-    position: fixed; inset: 0; z-index: 99999;
-    display: flex; align-items: center; justify-content: center;
-    padding: 30px; background: rgba(0, 0, 0, 0.78); backdrop-filter: blur(12px);
-}
-.details-card {
-    position: relative; width: min(1050px, 92vw); max-height: 88vh; overflow-y: auto;
-    padding: 65px 75px; background: var(--section-bg); color: var(--section-text);
-    border: 1px solid var(--section-accent); border-radius: 6px;
-    box-shadow: 0 35px 100px rgba(0, 0, 0, 0.55);
-    animation: detailsAppear 0.4s ease;
-}
-.details-close {
-    position: absolute; top: 22px; right: 22px;
-    width: 44px; height: 44px; display: grid; place-items: center;
-    border: 1px solid var(--section-text); border-radius: 50%;
-    background: transparent; color: var(--section-text); font-size: 25px; line-height: 1;
-    cursor: pointer; transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
-}
-.details-close:hover { background: var(--section-text); color: var(--section-bg); transform: rotate(90deg); }
 
-.details-label { margin: 0 0 18px; color: var(--section-accent); font-size: 11px; font-weight: 700; letter-spacing: 0.25em; }
-.details-card h3 {
-    max-width: 850px; margin: 0; color: var(--section-text);
-    font-size: clamp(2.8rem, 6vw, 5.8rem); font-weight: 800;
-    line-height: 0.95; letter-spacing: -0.05em;
-}
-.details-description { max-width: 850px; margin-top: 30px; color: var(--section-muted); font-size: 18px; line-height: 1.8; }
-
-.history-content { display: grid; gap: 28px; margin-top: 42px; }
-.history-item { padding-top: 24px; border-top: 1px solid var(--section-line); }
-.history-item span { display: block; margin-bottom: 10px; color: var(--section-accent); font-size: 10px; font-weight: 700; letter-spacing: 0.22em; }
-.history-item p { max-width: 850px; margin: 0; color: var(--section-muted); font-size: 17px; line-height: 1.8; }
-
-.details-info {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
-    margin-top: 42px; padding-top: 30px; border-top: 1px solid var(--section-line);
-}
-.details-info div { display: flex; flex-direction: column; gap: 9px; }
-.details-info span { color: var(--section-muted); font-size: 10px; font-weight: 700; letter-spacing: 0.2em; }
-.details-info strong { color: var(--section-text); font-size: 14px; line-height: 1.5; letter-spacing: 0.04em; }
-
-@keyframes detailsAppear {
-    from { opacity: 0; transform: translateY(30px) scale(0.96); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-}
 
 .section-line {
     position: absolute; left: 7%; right: 7%; bottom: 0; height: 1px;

@@ -194,7 +194,7 @@ onUnmounted(() => observer?.disconnect());
   <About v-else-if="$route.path === '/about'" />
 
   <!-- ====================== FALLBACK ====================== -->
-  <LandingPage v-else />
+  <router-view v-else />
 </template>
 
 <style scoped>

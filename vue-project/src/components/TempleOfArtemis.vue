@@ -1,6 +1,6 @@
 
 <script setup>
-import WonderSection from "./WonderSection.vue";
+import WonderDetail from "./WonderDetail.vue";
 import Navbar from "./Navbar.vue";
 import Footer from "./Footer.vue";
 
@@ -20,6 +20,6 @@ const wonder = {
 
 <template>
     <Navbar />
-    <WonderSection v-bind="wonder" />
+    <WonderDetail v-bind="wonder" />
     <Footer />
 </template>
