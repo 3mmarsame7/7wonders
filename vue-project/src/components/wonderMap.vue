@@ -61,6 +61,8 @@ onUnmounted(() => {
 .wonder-map {
   width: 100%;
   margin-top: 40px;
+  position: relative;
+  z-index: 1;
 }
 
 .map-container {
@@ -68,5 +70,7 @@ onUnmounted(() => {
   height: 450px;
   border-radius: 8px;
   overflow: hidden;
+  position: relative;
+  z-index: 1;
 }
 </style>

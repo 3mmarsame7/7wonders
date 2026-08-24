@@ -88,6 +88,9 @@ console.log('🔍 All Routes:', routes.map(r => r.path));
 
 const router = createRouter({
   history: createWebHistory(),
+    scrollBehavior() {
+    return { top: 0 };
+  },
   routes
 });
 
