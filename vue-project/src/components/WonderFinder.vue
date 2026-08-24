@@ -1,6 +1,9 @@
 ```vue
 <script setup>
 import { ref, computed } from "vue";
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const props = defineProps({
   wonders: {
@@ -287,6 +290,26 @@ const resetFinder = () => {
 
   result.value = null;
 };
+
+const goToWonder = (wonder) => {
+  if (!wonder) return;
+  
+  const slugMap = {
+    'great pyramid of giza': 'great-pyramid',
+    'hanging gardens of babylon': 'hanging-gardens',
+    'temple of artemis': 'temple-of-artemis',
+    'statue of zeus at olympia': 'statue-of-zeus',
+    'mausoleum at halicarnassus': 'mausoleum',
+    'colossus of rhodes': 'colossus-of-rhodes',
+    'lighthouse of alexandria': 'lighthouse-of-alexandria'
+  };
+  
+  const titleLower = wonder.title?.toLowerCase() || '';
+  const slug = slugMap[titleLower] || 'great-pyramid';
+  
+  router.push(`/wonder/${slug}`);
+};
+
 </script>
 
 
@@ -432,13 +455,14 @@ const resetFinder = () => {
       -->
 
       <button
-        type="button"
-        class="explore-button"
-      >
+         type="button"
+          class="explore-button"
+          @click="goToWonder(result)"
+        >
 
-        EXPLORE THIS WONDER
+            EXPLORE THIS WONDER
 
-        <span>→</span>
+          <span>→</span>
 
       </button>
 
