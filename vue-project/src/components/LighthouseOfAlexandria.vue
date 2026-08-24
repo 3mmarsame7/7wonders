@@ -15,6 +15,7 @@ const wonder = {
     image:
         "https://cdn.britannica.com/07/172307-050-4D3BA855/Pharos-Alexandria.jpg",
     theme: "sunset",
+    imagePosition: "center 13%",
 };
 </script>
 

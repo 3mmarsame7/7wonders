@@ -14,6 +14,10 @@ const props = defineProps({
     built: { type: String, required: true },
     image: { type: String, required: true },
     theme: { type: String, default: "sand" },
+    imagePosition: {
+        type: String,
+        default: "center center",
+    },
     coordinates: {
         type: Object,
         default: null,
@@ -94,6 +98,7 @@ onUnmounted(() => {
             <img
                 :src="image"
                 :alt="title"
+                :style="{ objectPosition: imagePosition }"
             />
 
             <div class="image-caption">

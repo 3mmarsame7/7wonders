@@ -19,9 +19,6 @@ const handleSearch = () => {
             @input="handleSearch"
         />
 
-        <button @click="handleSearch">
-            SEARCH
-        </button>
     </div>
 </template>
 
@@ -31,6 +28,8 @@ const handleSearch = () => {
     align-items: center;
     gap: 10px;
     width: min(700px, 90vw);
+    padding-top: 95px;
+    padding-bottom: 20px;
 }
 
 .search-bar input {
@@ -48,13 +47,4 @@ const handleSearch = () => {
     color: rgba(255, 255, 255, 0.5);
 }
 
-.search-bar button {
-    padding: 16px 25px;
-    border: none;
-    border-radius: 999px;
-    background: var(--color-sand);
-    color: var(--color-dark);
-    font-weight: 700;
-    cursor: pointer;
-}
 </style>

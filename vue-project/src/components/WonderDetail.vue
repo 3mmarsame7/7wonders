@@ -14,6 +14,14 @@ const props = defineProps({
     built: { type: String, required: true },
     image: { type: String, required: true },
     theme: { type: String, default: "sand" },
+    imagePosition: {
+        type: String,
+        default: "center center",
+    },
+    // imageScale: {
+    //     type: Number,
+    //     default: 1,
+    // },
     coordinates: {
         type: Object,
         default: null,
@@ -113,7 +121,14 @@ const goBack = () => {
             </button>
 
             <div class="detail-image">
-                <img :src="image" :alt="title" />
+                <img
+                    :src="image"
+                    :alt="title"
+                    :style="{
+                        // transform: `scale(${imageScale})`,
+                        objectPosition: imagePosition,
+                    }"
+                />
                 <div class="image-number">
                     <span>WONDER</span>
                     <strong>{{ number }}</strong>
@@ -346,6 +361,7 @@ const goBack = () => {
     width: 100%;
     height: 500px;
     object-fit: cover;
+    /* transform-origin: center center; */
 }
 
 .image-number {

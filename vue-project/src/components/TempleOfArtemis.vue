@@ -15,6 +15,7 @@ const wonder = {
     image:
         "https://cdn.britannica.com/51/168951-050-FF56AB5F/Temple-of-Artemis-Ephesus.jpg",
     theme: "marble",
+    imagePosition: "95% 25%",
 };
 </script>
 

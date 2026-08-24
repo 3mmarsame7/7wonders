@@ -4,7 +4,7 @@
             <span class="logo-mark">7W</span>
             <span class="logo-text">
                 WONDERS
-                <small style="font-size: 9px;">OF THE WORLD</small>
+                <small style="font-size: 9px;">OF ANCIENT WORLD</small>
             </span>
         </router-link>
 
@@ -72,6 +72,7 @@ onUnmounted(() => {
     padding: 0 5%;
     z-index: 100;
     color: white;
+    background: var(--color-dark);
     transition:
         height 0.5s ease,
         background 0.5s ease,

@@ -1,5 +1,4 @@
 
-[file name]: App.vue
 <script setup>
 import {
   onMounted,
@@ -74,6 +73,20 @@ const getWonderTheme = (name) => {
   if (title.includes("lighthouse") || title.includes("alexandria")) return "sunset";
   return "sand";
 };
+
+const getImagePosition = (name) => {
+  const title = name?.toLowerCase() || "";
+
+  if (title.includes("great pyramid")) return "center 70%";
+  if (title.includes("hanging gardens")) return "90% 50%";
+  if (title.includes("temple of artemis")) return "70% 55%";
+  if (title.includes("statue of zeus")) return "center 45%";
+  if (title.includes("mausoleum")) return "70% 60%";
+  if (title.includes("colossus")) return "90%  35%";
+  if (title.includes("lighthouse")) return "center 40%";
+
+  return "center center";
+};
 /* =====================================================
    WONDER Map
 ===================================================== */
@@ -137,6 +150,7 @@ const fetchWonders = async () => {
         built: typeof wonder.build_year === "number" ? (wonder.build_year < 0 ? `c. ${Math.abs(wonder.build_year)} BCE` : `c. ${wonder.build_year}`) : wonder.build_year || "UNKNOWN",
         image: wonder.links?.images?.[0] || wonder.image || "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368",
         theme: getWonderTheme(wonderName),
+        imagePosition: getImagePosition(wonderName),
         coordinates: getCoordinatesFromGoogleMaps(wonder.links?.google_maps),
       };
     });
