@@ -14,6 +14,9 @@ import Mausoleum from "../components/Mausoleum.vue";
 import ColossusOfRhodes from "../components/ColossusOfRhodes.vue";
 import LighthouseOfAlexandria from "../components/LighthouseOfAlexandria.vue";
 import WonderFinderPage from "../views/WonderFinderPage.vue";
+
+
+
 const routes = [
   {
       path: "/",
@@ -63,7 +66,6 @@ const routes = [
       component: Mausoleum
     },
 
-  {
   {
     path: "/wonder/colossus-of-rhodes",
     name: "colossus-of-rhodes",
