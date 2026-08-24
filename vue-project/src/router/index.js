@@ -14,6 +14,7 @@ import Mausoleum from "../components/Mausoleum.vue";
 import ColossusOfRhodes from "../components/ColossusOfRhodes.vue";
 import LighthouseOfAlexandria from "../components/LighthouseOfAlexandria.vue";
 import WonderFinderPage from "../views/WonderFinderPage.vue";
+import TimeTravel from "../views/TimeTravel.vue";
 
 
 
@@ -79,15 +80,26 @@ const routes = [
   },
 
   {
+  path: "/time-travel",
+  name: "time-travel",
+  component: TimeTravel
+  },
+
+  {
     path: "/match",
     component: WonderFinderPage
   }
+
+
 ];
 
 console.log('🔍 All Routes:', routes.map(r => r.path));
 
 const router = createRouter({
   history: createWebHistory(),
+    scrollBehavior() {
+    return { top: 0 };
+  },
   routes
 });
 

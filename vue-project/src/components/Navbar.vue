@@ -4,7 +4,7 @@
             <span class="logo-mark">7W</span>
             <span class="logo-text">
                 WONDERS
-                <small style="font-size: 9px;">OF THE WORLD</small>
+                <small style="font-size: 9px;">OF ANCIENT WORLD</small>
             </span>
         </router-link>
 
@@ -12,6 +12,7 @@
             <router-link to="/">HOME</router-link>
             <router-link to="/wonders">WONDERS</router-link>
             <router-link to="/match">MY MATCH</router-link>
+            <router-link to="/time-travel">TIME TRAVEL</router-link>
             <router-link to="/about">ABOUT</router-link>
         </nav>
 
@@ -25,6 +26,7 @@
             <router-link to="/" @click="closeMenu">HOME</router-link>
             <router-link to="/wonders" @click="closeMenu">WONDERS</router-link>
             <router-link to="/match" @click="closeMenu">MY MATCH</router-link>
+            <router-link to="/time-travel" @click="closeMenu">TIME TRAVEL</router-link>
             <router-link to="/about" @click="closeMenu">ABOUT</router-link>
         </div>
     </header>
@@ -70,6 +72,7 @@ onUnmounted(() => {
     padding: 0 5%;
     z-index: 100;
     color: white;
+    background: var(--color-dark);
     transition:
         height 0.5s ease,
         background 0.5s ease,

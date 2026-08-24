@@ -46,14 +46,11 @@ const clearFilters = () => {
         <input
           v-model="search"
           type="text"
-          placeholder="Search wonders..."
+          placeholder="SEARCH THE ANCIENT WONDERS..."
         />
 
       </div>
 
-      <button class="search-button">
-        SEARCH
-      </button>
 
     </div>
 
@@ -112,8 +109,8 @@ const clearFilters = () => {
 
   margin: 0 auto;
 
-  padding-top: 70px;
-  padding-bottom: 12px;
+  padding-top: 95px;
+  padding-bottom: 20px;
 }
 
 
@@ -151,7 +148,8 @@ const clearFilters = () => {
   border-radius: 999px;
 
   background: #101820;
-
+  box-shadow:
+        -8px 8px 20px rgba(167, 124, 45, 0.18);
   transition:
     box-shadow 0.3s ease,
     border-color 0.3s ease;
@@ -162,9 +160,7 @@ const clearFilters = () => {
 .search-box:focus-within {
 
   box-shadow:
-    0 0 0 2px
-    rgba(214, 184, 120, 0.12);
-
+    -10px 10px 28px rgba(167, 124, 45, 0.30);
 }
 
 
@@ -178,7 +174,7 @@ const clearFilters = () => {
 
   background: transparent;
 
-  color: white;
+  color: var(--color-sand);
 
   font-size: 14px;
 
@@ -189,52 +185,6 @@ const clearFilters = () => {
 
   color:
     rgba(255, 255, 255, 0.55);
-
-}
-
-
-/* =====================================================
-   SEARCH BUTTON
-===================================================== */
-
-.search-button {
-
-  height: 48px;
-
-  padding: 0 24px;
-
-  border: none;
-
-  border-radius: 999px;
-
-  background:
-    var(--color-sand);
-
-  color:
-    var(--color-dark);
-
-  font-size: 11px;
-
-  font-weight: 800;
-
-  letter-spacing: 0.15em;
-
-  cursor: pointer;
-
-  transition:
-    transform 0.3s ease,
-    background 0.3s ease;
-
-}
-
-
-.search-button:hover {
-
-  transform:
-    translateY(-2px);
-
-  background:
-    #e5ca91;
 
 }
 
@@ -289,6 +239,7 @@ const clearFilters = () => {
   outline: none;
 
   cursor: pointer;
+  color-scheme: dark;
 
 }
 
@@ -301,7 +252,11 @@ const clearFilters = () => {
   color: white;
 
 }
-
+.filter-wrapper select option:hover,
+.filter-wrapper select option:focus {
+  background: var(--color-sand);
+  color: var(--color-dark);
+}
 
 /* =====================================================
    CLEAR

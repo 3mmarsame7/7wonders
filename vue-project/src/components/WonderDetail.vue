@@ -2,6 +2,8 @@
 import Navbar from "./Navbar.vue";
 import Footer from "./Footer.vue";
 import ViewMap from "./viewMap.vue";
+import wondersData from "../Data/ancient-seven-wonders(1).json";
+import GallerySection from "./GallerySection.vue";
 
 const props = defineProps({
     number: { type: String, required: true },
@@ -12,12 +14,24 @@ const props = defineProps({
     built: { type: String, required: true },
     image: { type: String, required: true },
     theme: { type: String, default: "sand" },
+    imagePosition: {
+        type: String,
+        default: "center center",
+    },
+    // imageScale: {
+    //     type: Number,
+    //     default: 1,
+    // },
     coordinates: {
         type: Object,
         default: null,
     },
 });
 
+const jsonWonder = wondersData.wonders.find(
+    (wonder) => wonder.name.toUpperCase() === props.title
+);
+const galleryImages = jsonWonder?.galleryImages || [];
 
 const getHardcodedCoordinates = (title) => {
     const coordMap = {
@@ -107,7 +121,14 @@ const goBack = () => {
             </button>
 
             <div class="detail-image">
-                <img :src="image" :alt="title" />
+                <img
+                    :src="image"
+                    :alt="title"
+                    :style="{
+                        // transform: `scale(${imageScale})`,
+                        objectPosition: imagePosition,
+                    }"
+                />
                 <div class="image-number">
                     <span>WONDER</span>
                     <strong>{{ number }}</strong>
@@ -138,6 +159,128 @@ const goBack = () => {
                     </div>
                 </div>
 
+
+                <div v-if="jsonWonder?.architecture" class="architecture-content">
+
+                    <div class="section-heading">
+                        <span>ARCHITECTURE & ENGINEERING</span>
+                        <h2>How Was It Built?</h2>
+                    </div>
+
+                    <div class="architecture-grid">
+
+                        <div class="architecture-item">
+                            <span>CONSTRUCTION</span>
+                            <p>{{ jsonWonder.architecture.howItWasBuilt }}</p>
+                        </div>
+
+                        <div class="architecture-item">
+                            <span>ENGINEERING DESIGN</span>
+                            <p>{{ jsonWonder.architecture.engineeringDesign }}</p>
+                        </div>
+
+                        <div class="architecture-item">
+                            <span>HEIGHT</span>
+                            <p>{{ jsonWonder.architecture.height }}</p>
+                        </div>
+
+                        <div class="architecture-item">
+                            <span>SIZE</span>
+                            <p>{{ jsonWonder.architecture.size }}</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div
+                    v-if="jsonWonder?.architecture?.materials?.length"
+                    class="materials-section"
+                >
+
+                    <div class="section-heading">
+                        <span>MATERIALS</span>
+                        <h2>Built From</h2>
+                    </div>
+
+                    <div class="materials-list">
+                        <span
+                            v-for="material in jsonWonder.architecture.materials"
+                            :key="material"
+                            class="material-tag"
+                        >
+                            {{ material }}
+                        </span>
+                    </div>
+
+                </div>
+
+                <div
+                    v-if="jsonWonder?.engineeringMarvel"
+                    class="engineering-section"
+                >
+
+                    <span>ENGINEERING MARVEL</span>
+
+                    <p>
+                        {{ jsonWonder.engineeringMarvel }}
+                    </p>
+
+                </div>
+
+                <div
+                    v-if="jsonWonder?.interestingFacts?.length"
+                    class="facts-section"
+                >
+
+                    <div class="section-heading">
+                        <span>INTERESTING FACTS</span>
+                        <h2>Did You Know?</h2>
+                    </div>
+
+                    <ul>
+                        <li
+                            v-for="fact in jsonWonder.interestingFacts"
+                            :key="fact"
+                        >
+                            {{ fact }}
+                        </li>
+                    </ul>
+
+                </div>
+
+                <GallerySection
+                    :images="galleryImages"
+                />
+
+                <div
+                    v-if="jsonWonder?.articles?.length"
+                    class="articles-section"
+                >
+                    <div class="section-heading">
+                        <span>FURTHER READING</span>
+                        <h2>Explore More</h2>
+                    </div>
+
+                    <div class="articles-list">
+                        <a
+                            v-for="article in jsonWonder.articles"
+                            :key="article.url"
+                            :href="article.url"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="article-item"
+                        >
+                            <div class="article-content">
+                                <span>ARTICLE</span>
+                                <p>{{ article.title }}</p>
+                            </div>
+
+                            <span class="article-arrow">↗</span>
+                        </a>
+                    </div>
+                </div>
+
                 <div class="detail-meta">
                     <div>
                         <span>WONDER</span>
@@ -162,7 +305,6 @@ const goBack = () => {
             </div>
         </div>
 
-        <Footer />
     </div>
 </template>
 
@@ -219,6 +361,7 @@ const goBack = () => {
     width: 100%;
     height: 500px;
     object-fit: cover;
+    /* transform-origin: center center; */
 }
 
 .image-number {
@@ -320,6 +463,348 @@ const goBack = () => {
     margin-top: 20px;
 }
 
+/* =====================================================
+   NEW SECTIONS
+===================================================== */
+
+.architecture-content,
+.materials-section,
+.engineering-section,
+.facts-section {
+    margin-top: 40px;
+    padding-top: 25px;
+
+    /* نفس الخط الفاصل الموجود في الـ History */
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+
+/* =====================================================
+   SECTION HEADING
+===================================================== */
+
+.section-heading {
+    margin-bottom: 25px;
+}
+
+.section-heading > span {
+    display: block;
+    color: var(--section-accent);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    margin-bottom: 8px;
+}
+
+.section-heading h2 {
+    margin: 0;
+    color: var(--section-text);
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+/* =====================================================
+   ARCHITECTURE & ENGINEERING
+===================================================== */
+
+.architecture-content {
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.architecture-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.architecture-item {
+    position: relative;
+    padding: 25px 28px;
+    background: var(--section-bg);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.architecture-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 25px;
+    width: 3px;
+    height: 28px;
+    background: var(--section-accent);
+    border-radius: 0 3px 3px 0;
+}
+
+.architecture-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.architecture-item span {
+    display: block;
+    color: var(--section-accent);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    margin-bottom: 10px;
+}
+
+.architecture-item p {
+    margin: 0;
+    color: var(--section-muted);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+/* =====================================================
+   MATERIALS
+===================================================== */
+
+.materials-list {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+.material-tag {
+    padding: 8px 15px;
+
+    border: 1px solid rgba(0, 0, 0, 0.12);
+
+    border-radius: 20px;
+
+    background: transparent;
+
+    color: var(--section-muted);
+
+    font-size: 11px;
+
+    transition:
+        color 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.material-tag:hover {
+    color: var(--section-accent);
+
+    border-color: var(--section-accent);
+
+    transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   ENGINEERING MARVEL
+===================================================== */
+
+.engineering-section {
+    padding-bottom: 0;
+}
+
+.engineering-section > span {
+    margin-bottom: 10px;
+}
+
+.engineering-section p {
+    max-width: 850px;
+
+    margin: 0;
+
+    color: var(--section-muted);
+
+    font-size: 15px;
+
+    line-height: 1.8;
+}
+
+
+/* =====================================================
+   INTERESTING FACTS
+===================================================== */
+
+.facts-section ul {
+    list-style: none;
+
+    padding: 0;
+    margin: 0;
+}
+
+.facts-section li {
+    position: relative;
+
+    padding: 8px 0 8px 25px;
+
+    border: none;
+
+    color: var(--section-muted);
+
+    font-size: 15px;
+
+    line-height: 1.8;
+}
+
+.facts-section li::before {
+    content: "•";
+
+    position: absolute;
+
+    left: 0;
+    top: 8px;
+
+    color: var(--section-accent);
+
+    font-size: 16px;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .architecture-content,
+    .materials-section,
+    .engineering-section,
+    .facts-section {
+        margin-top: 35px;
+        padding-top: 20px;
+    }
+
+    .architecture-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .architecture-item {
+        padding: 12px 0;
+    }
+
+    .section-heading {
+        margin-bottom: 18px;
+    }
+
+    .section-heading h2 {
+        font-size: 16px;
+    }
+
+    .architecture-item p,
+    .engineering-section p,
+    .facts-section li {
+        font-size: 14px;
+    }
+
+    .material-tag {
+        font-size: 10px;
+        padding: 7px 12px;
+    }
+}
+
+/* =====================================================
+   ARTICLES
+===================================================== */
+
+.articles-section {
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.articles-list {
+    display: grid;
+    gap: 12px;
+}
+
+.article-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 16px 0;
+
+    text-decoration: none;
+
+    transition: all 0.3s ease;
+}
+
+.article-content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.article-content span {
+    color: var(--section-accent);
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+}
+
+.article-content p {
+    margin: 0;
+
+    color: var(--section-muted);
+
+    font-size: 14px;
+    line-height: 1.5;
+
+    transition: color 0.3s ease;
+}
+
+.article-arrow {
+    color: var(--section-muted);
+
+    font-size: 20px;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.article-item:hover .article-content p {
+    color: var(--section-accent);
+}
+
+.article-item:hover .article-arrow {
+    color: var(--section-accent);
+    transform: translate(3px, -3px);
+}
+
+
+/* =====================================================
+   ARTICLES - MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .articles-section {
+        margin-top: 35px;
+        padding-top: 20px;
+    }
+
+    .article-item {
+        padding: 14px 0;
+    }
+
+    .article-content p {
+        font-size: 13px;
+    }
+
+    .article-arrow {
+        font-size: 18px;
+    }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .detail-image img {
@@ -338,6 +823,38 @@ const goBack = () => {
 @media (max-width: 480px) {
     .detail-meta {
         grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 600px) {
+
+    .architecture-content {
+        margin-top: 35px;
+        padding-top: 20px;
+    }
+
+    .architecture-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .architecture-item {
+        padding: 22px 24px;
+    }
+
+    .architecture-item::before {
+        top: 22px;
+    }
+
+    .architecture-item p {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    .section-heading {
+        margin-bottom: 20px;
+    }
+
+    .section-heading h2 {
+        font-size: 19px;
     }
 }
 </style>
