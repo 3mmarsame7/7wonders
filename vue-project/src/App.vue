@@ -16,6 +16,7 @@ import LandingPage from "./components/landingpage.vue";
 import About from "./components/About.vue";
 import Footer from "./components/Footer.vue";
 import WonderFinderPage from "./views/WonderFinderPage.vue";
+import LoadingScreen from "./components/LoadingScreen.vue";
 
 /* =====================================================
    STATE
@@ -95,6 +96,9 @@ const fetchWonders = async () => {
   try {
     loading.value = true;
     error.value = null;
+    const minimumLoadingTime = new Promise((resolve) => {
+    setTimeout(resolve, 4000);
+    });
 
     const response = await fetch(API_URL);
     if (!response.ok) throw new Error(`API returned ${response.status}`);
@@ -136,6 +140,7 @@ const fetchWonders = async () => {
         coordinates: getCoordinatesFromGoogleMaps(wonder.links?.google_maps),
       };
     });
+    await minimumLoadingTime;
   } catch (err) {
     console.error("Wonders API Error:", err);
     error.value = "Failed to load the ancient wonders.";
@@ -171,20 +176,19 @@ onUnmounted(() => observer?.disconnect());
 </script>
 
 <template>
+
+  <LoadingScreen v-if="loading" />
   <!-- ====================== LANDING PAGE ====================== -->
-  <LandingPage v-if="$route.path === '/'" />
+  <LandingPage v-if="$route.path === '/'"
+        :wonders="wonders" />
 
   <!-- ====================== WONDERS PAGE (اللستة الطويلة) ====================== -->
   <main v-else-if="$route.path === '/wonders'" class="wonders-page">
     <Navbar />
     <SearchFilter :locations="locations" @filter-change="handleFilterChange" />
 
-    <section v-if="loading" class="status-section">
-      <div class="loader"></div>
-      <p>LOADING WONDERS...</p>
-    </section>
 
-    <section v-else-if="error" class="status-section error-section">
+    <section v-if="error" class="status-section error-section">
       <p>{{ error }}</p>
       <button class="retry-button" @click="fetchWonders">TRY AGAIN</button>
     </section>
