@@ -163,7 +163,35 @@ import Footer from "../components/Footer.vue";
 
       <div class="team-grid">
 
-        <!-- MEMBER 1 -->
+        <div class="team-card">
+
+          <div class="member-image">
+            <img
+              src="../image/amaar.jpeg"
+              alt="Team Member"
+            />
+          </div>
+
+          <h3>Ammar Sameh</h3>
+
+          <span class="role">
+            Frontend Developer
+          </span>
+
+          <ul>
+            <li>Team Leader</li>
+            <li>Api and Data Management</li>
+            <li>Landing Page</li>
+          
+          </ul>
+
+          <div class="social">
+           
+            <a href="https://www.linkedin.com/in/ammarsame7?utm_source=share_via&utm_content=profile&utm_medium=member_android">LinkedIn</a>
+          </div>
+
+        </div>
+
         <div class="team-card">
 
           <div class="member-image">
@@ -181,8 +209,9 @@ import Footer from "../components/Footer.vue";
 
           <ul>
             
-            <li>Footer page</li>
-            <li>About page</li>
+            <li>About Page</li>
+            <li>Footer Component</li>
+            <li>Time Travel Page</li>
             
           </ul>
 
@@ -194,98 +223,6 @@ import Footer from "../components/Footer.vue";
         </div>
 
 
-        <!-- MEMBER 2 -->
-        <div class="team-card">
-
-          <div class="member-image">
-            <img
-              src="../image/waleed.jpeg"
-              alt="Team Member"
-            />
-          </div>
-
-          <h3>mohamed waled</h3>
-
-          <span class="role">
-             Frontend Developer
-          </span>
-
-          <ul>
-            <li>Home page</li>
-            <li>UI-UX/Animation</li>
-            
-            
-          </ul>
-
-          <div class="social">
-            
-            <a href="https://www.linkedin.com/in/mohamed-waled-elsayed?utm_source=share_via&utm_content=profile&utm_medium=member_android">LinkedIn</a>
-          </div>
-
-        </div>
-
-
-        <!-- MEMBER 3 -->
-        <div class="team-card">
-
-          <div class="member-image">
-            <img
-              src="../image/amaar.jpeg"
-              alt="Team Member"
-            />
-          </div>
-
-          <h3>Amaar Sameh</h3>
-
-          <span class="role">
-            Frontend Developer
-          </span>
-
-          <ul>
-            <li>Team Leader</li>
-          
-          </ul>
-
-          <div class="social">
-           
-            <a href="https://www.linkedin.com/in/ammarsame7?utm_source=share_via&utm_content=profile&utm_medium=member_android">LinkedIn</a>
-          </div>
-
-        </div>
-
-
-        <!-- MEMBER 4 -->
-        <div class="team-card">
-
-          <div class="member-image">
-            <img
-              src="../image/nagla.jpeg"
-              alt="Team Member"
-            />
-          </div>
-
-          <h3>Nagla Wagdy</h3>
-
-          <span class="role">
-            Frontend Developer
-          </span>
-
-          <ul>
-            <li>Maps</li>
-            <li>Filter</li>
-            <li>search</li>
-            
-          </ul>
-
-          <div class="social">
-            
-            <a href="https://www.linkedin.com/in/ngla-wagdy-9009a3365?utm_source=share_via&utm_content=profile&utm_medium=member_android">LinkedIn</a>
-          </div>
-
-        </div>
-
-
-        <!-- MEMBER 5 -->
         <div class="team-card">
 
           <div class="member-image">
@@ -302,7 +239,9 @@ import Footer from "../components/Footer.vue";
           </span>
 
           <ul>
-            <li>Routing</li>
+            <li>Routing and Navigation</li>
+            <li>Vue.js Framework</li>
+            <li>Wonders Structure</li>
           </ul>
 
           <div class="social">
@@ -313,7 +252,6 @@ import Footer from "../components/Footer.vue";
         </div>
 
 
-        <!-- MEMBER 6 -->
         <div class="team-card">
 
           <div class="member-image">
@@ -330,7 +268,9 @@ import Footer from "../components/Footer.vue";
           </span>
 
           <ul>
-            <li>wonder-explor</li>
+            <li>Wonders Explorer</li>
+            <li>Wonders Pages</li>
+            <li>Vue.js Support</li>
           
           </ul>
 
@@ -340,6 +280,71 @@ import Footer from "../components/Footer.vue";
           </div>
 
         </div>
+
+
+        <div class="team-card">
+
+          <div class="member-image">
+            <img
+              src="../image/waleed.jpeg"
+              alt="Team Member"
+            />
+          </div>
+
+          <h3>mohamed waleed</h3>
+
+          <span class="role">
+             Frontend Developer
+          </span>
+
+          <ul>
+            <li>Wonders Main Page</li>
+            <li>UI-UX</li>
+            <li>Animation and Styling</li>
+            
+            
+          </ul>
+
+          <div class="social">
+            
+            <a href="https://www.linkedin.com/in/mohamed-waled-elsayed?utm_source=share_via&utm_content=profile&utm_medium=member_android">LinkedIn</a>
+          </div>
+
+        </div>
+
+        
+
+
+          <div class="team-card">
+
+          <div class="member-image">
+            <img
+              src="../image/nagla.jpeg"
+              alt="Team Member"
+            />
+          </div>
+
+          <h3>Nagla Wagdy</h3>
+
+          <span class="role">
+            Frontend Developer
+          </span>
+
+          <ul>
+            <li>Maps</li>
+            <li>Filter and Search</li>
+            <li>My Match and Loading Pages</li>
+            
+          </ul>
+
+          <div class="social">
+            
+            <a href="https://www.linkedin.com/in/ngla-wagdy-9009a3365?utm_source=share_via&utm_content=profile&utm_medium=member_android">LinkedIn</a>
+          </div>
+
+        </div>
+
+
 
       </div>
 
