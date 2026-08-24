@@ -1,0 +1,334 @@
+{
+  "wonders": [
+    {
+      "id": 1,
+      "slug": "great-pyramid-of-giza",
+      "name": "Great Pyramid of Giza",
+      "location": "Giza, Egypt",
+      "era": "c. 2589–2566 BC",
+      "shortDescription": "The Great Pyramid of Giza, built for Pharaoh Khufu, is the only Ancient Wonder that still survives substantially today.",
+      "architecture": {
+        "howItWasBuilt": "Built as the central monument of Khufu's funerary complex. Egyptian builders quarried, transported, positioned, and precisely aligned millions of stone blocks. The exact method used to raise every block remains uncertain.",
+        "materials": [
+          "Local limestone",
+          "Tura limestone for the outer casing",
+          "Granite for important internal chambers and structural elements"
+        ],
+        "engineeringDesign": "The pyramid shape distributes enormous weight downward toward the broad base, giving the structure exceptional stability. It originally had a smooth outer casing of polished white limestone. Its internal design includes the Grand Gallery, King's Chamber, passageways, and a subterranean chamber.",
+        "height": "Approximately 146.5 m (original height)",
+        "size": "Base approximately 230 m on each side; more than 2.3 million stone blocks are commonly estimated."
+      },
+      "engineeringMarvel": "The Great Pyramid remained the tallest human-made structure in the world for nearly 3,800 years.",
+      "interestingFacts": [
+        "It is the only Ancient Wonder still substantially standing today.",
+        "Its original outer casing was made from polished white limestone.",
+        "Its original height was greater than its present height.",
+        "The Grand Gallery is one of its most remarkable internal architectural features."
+      ],
+      "galleryImages": [
+        "https://upload.wikimedia.org/wikipedia/commons/e/e3/Kheops-Pyramid.jpg",
+        "https://cdn-v2.theculturetrip.com/1920x680/wp-content/uploads/2021/07/great-pyramid.webp",
+        "https://www.worldhistory.org/uploads/images/6190.jpg?v=1785616748-0",
+        "https://www.nogatours.com/wp-content/uploads/2023/10/sphinx-7105523_640.jpg",
+        "https://media.cntravellerme.com/photos/66437dc72b18f50e7b4eeb46/1:1/w_960,c_limit/1175497363",
+        "https://www.onenationtravel.com/wp-content/uploads/2026/05/pyramids-of-egypt-sunset-desert-camel-carriage-giza.webp"
+      ],
+      "articles": [
+        {
+          "title": "Egyptian Ministry of Tourism and Antiquities — The Great Pyramid",
+          "url": "https://egymonuments.gov.eg/en/monuments/the-great-pyramid"
+        },
+        {
+          "title": "World History Encyclopedia — The Seven Wonders",
+          "url": "https://www.worldhistory.org/The_Seven_Wonders/"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "hanging-gardens-of-babylon",
+      "name": "Hanging Gardens of Babylon",
+      "location": "Babylon, Mesopotamia — location and existence disputed",
+      "era": "Traditionally associated with the Neo-Babylonian period",
+      "shortDescription": "The Hanging Gardens are the most mysterious Ancient Wonder because their existence and exact location have never been archaeologically confirmed.",
+      "architecture": {
+        "howItWasBuilt": "Ancient descriptions portray the gardens as a series of elevated terraces supporting trees, plants, and deep layers of soil. The exact construction method is unknown because no confirmed remains of the gardens have been identified.",
+        "materials": [
+          "Baked brick",
+          "Stone",
+          "Bitumen or asphalt",
+          "Soil"
+        ],
+        "engineeringDesign": "The major engineering challenge would have been supporting heavy soil and mature vegetation above ground while supplying water to elevated terraces. Ancient accounts describe systems for lifting water to the higher levels.",
+        "height": "Exact height is unknown. Ancient literary descriptions give varying estimates.",
+        "size": "No archaeologically confirmed dimensions exist. Some ancient descriptions provide approximate dimensions, but they should be treated as literary estimates rather than established measurements."
+      },
+      "engineeringMarvel": "The concept of creating large elevated gardens in the hot and relatively dry environment of Mesopotamia would have required sophisticated structural support and water management.",
+      "interestingFacts": [
+        "Their existence has never been conclusively proven by archaeology.",
+        "The gardens may have been located at Nineveh rather than Babylon, according to a modern scholarly theory.",
+        "Babylonian records currently known to scholars do not provide clear contemporary evidence for the gardens.",
+        "Water supply is one of the central engineering questions surrounding the story.",
+        "Any visual reconstruction should be labeled as an artistic reconstruction because the historical appearance is uncertain."
+      ],
+      "galleryImages": [
+        "https://babilonosodai.lt/wp-content/uploads/2023/01/KBS-1024x1024.jpg",
+        "https://media.easy-peasy.ai/27feb2bb-aeb4-4a83-9fb6-8f3f2a15885e/7f4946a1-4912-40f0-9113-58f19d029f6a_medium.webp",
+        "https://dinromerohistory.wordpress.com/wp-content/uploads/2015/06/6681393_orig.jpg",
+        "https://www.womenhistoryblog.com/wp-content/uploads/2020/06/HangingGardensofBabylon600BC.jpg",
+        "https://substackcdn.com/image/fetch/$s_!PXUi!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F546f7da9-972a-48f9-ad26-701ed10631ba_1022x758.jpeg",
+        "https://armstronginstitute.org/files/W1siZiIsIjIwMjQvMDUvMDkvNTRpa3BodnJ4MV9IYW5naW5nX0dhcmRlbnNfb2ZfQmFieWxvbl9ieV9GZXJkaW5hbmRfS25hYl9fMTg4Nl8ucG5nIl0sWyJwIiwidGh1bWIiLCIxOTg0eD4iXSxbInAiLCJlbmNvZGUiLCJqcGciLCItcXVhbGl0eSA4MCJdXQ/034c282ed7960ae4/Hanging_Gardens_of_Babylon_by_Ferdinand_Knab_%281886%29.jpg.jpg"
+      ],
+      "articles": [
+        {
+          "title": "Cambridge University Press — The Hanging Gardens of Nineveh",
+          "url": "https://www.cambridge.org/core/journals/iraq/article/abs/hanging-gardens-of-nineveh/86051A98285BE231D9C153F691FD8F2E"
+        },
+        {
+          "title": "Engineers Ireland — Engineering the Hanging Garden of Babylon",
+          "url": "https://www.engineersireland.ie/Engineers-Journal/Civil/engineering-the-hanging-garden-of-babylon"
+        },
+        {
+          "title": "World History Encyclopedia — The Seven Wonders",
+          "url": "https://www.worldhistory.org/The_Seven_Wonders/"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "slug": "statue-of-zeus-at-olympia",
+      "name": "Statue of Zeus at Olympia",
+      "location": "Olympia, Greece",
+      "era": "c. 430 BC",
+      "shortDescription": "A colossal seated statue of Zeus created by the renowned Greek sculptor Phidias and housed inside the Temple of Zeus at Olympia.",
+      "architecture": {
+        "howItWasBuilt": "The statue was constructed around an internal wooden framework, which supported separately prepared decorative surfaces. This allowed the sculptors to create a monumental figure without carving it from a single solid block.",
+        "materials": [
+          "Wooden framework",
+          "Ivory",
+          "Gold",
+          "Cedar wood",
+          "Ebony",
+          "Precious stones"
+        ],
+        "engineeringDesign": "The chryselephantine technique combined a structural wooden core with ivory and gold coverings. The construction method made it possible to create a very large and richly decorated statue while keeping the structure manageable.",
+        "height": "Approximately 12.4 m",
+        "size": "The statue was large enough to dominate the interior of the Temple of Zeus and was designed as a seated figure."
+      },
+      "engineeringMarvel": "The combination of a large internal framework, ivory surfaces, gold panels, and monumental scale made the statue an extraordinary achievement in ancient sculpture and construction.",
+      "interestingFacts": [
+        "The statue depicted Zeus seated on a richly decorated throne.",
+        "Zeus held a figure of Nike in one hand.",
+        "The statue used the chryselephantine technique: ivory for flesh and gold for clothing and decoration.",
+        "It was regarded in antiquity as one of the greatest works of the sculptor Phidias.",
+        "The statue stood inside the Temple of Zeus rather than outdoors."
+      ],
+      "galleryImages": [
+        "https://www.jdiezarnal.com/lassietemaravillasdelmundozeus01.jpg",
+        "https://thumbs.dreamstime.com/b/seven-wonders-ancient-world-statue-zues-olympia-white-background-355671592.jpg?w=768",
+        "https://thumbs.dreamstime.com/b/seven-wonders-ancient-world-statue-zeus-olympia-great-construction-greeks-hand-drawn-engraved-vintage-sketch-149910568.jpg?w=768",
+        "https://thumbs.dreamstime.com/b/vector-symbols-seven-wonders-ancient-world-statue-zeus-white-backdrop-freehand-outline-ink-hand-drawn-background-77961221.jpg?w=768",
+        "https://cdn.uw.manifoldapp.org/store/resource/1957c834-dd68-49dc-9191-9594c04d69a9/attachment/medium-4a1b3322f050b49d9e764046382941aa.jpg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWZgAIslSIOcbbo8wM-S9LlnxJLKYTNWrQxX-xn3AXzZOu6fu8NT17uScE&s=10"
+      ],
+      "articles": [
+        {
+          "title": "World History Encyclopedia — The Seven Wonders",
+          "url": "https://www.worldhistory.org/The_Seven_Wonders/"
+        },
+        {
+          "title": "American School of Classical Studies at Athens — Technical Observations",
+          "url": "https://www.ascsa.edu.gr/uploads/media/hesperia/40205744.pdf"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "temple-of-artemis-at-ephesus",
+      "name": "TEMPLE OF ARTEMIS",
+      "location": "Ephesus, near modern Selçuk, Türkiye",
+      "era": "Famous reconstruction begun c. 550 BC",
+      "shortDescription": "A monumental Greek temple dedicated to Artemis, famous for its enormous scale, Ionic columns, marble architecture, and sculptural decoration.",
+      "architecture": {
+        "howItWasBuilt": "The famous version of the temple was built as a monumental marble structure with a large platform and extensive rows of columns. Ancient architects and craftsmen developed the building over multiple construction phases.",
+        "materials": [
+          "Marble",
+          "Stone",
+          "Sculpted marble",
+          "Decorative architectural elements"
+        ],
+        "engineeringDesign": "The temple used a large platform and multiple rows of tall Ionic columns. Some columns and architectural elements were richly sculpted, combining structural engineering with monumental artistic decoration.",
+        "height": "Columns were approximately 13 m high.",
+        "size": "Approximately 115 m long by 46 m wide for the major famous reconstruction."
+      },
+      "engineeringMarvel": "Its enormous footprint, long rows of monumental marble columns, and combination of structural and sculptural elements made it one of the greatest temple complexes of the ancient Greek world.",
+      "interestingFacts": [
+        "The temple was destroyed and rebuilt more than once.",
+        "Some of its columns and architectural elements were richly decorated with sculpture.",
+        "Only limited remains survive at the archaeological site today.",
+        "The temple was dedicated to Artemis, a major goddess worshipped at Ephesus.",
+        "The site preserves evidence of several architectural phases."
+      ],
+      "galleryImages": [
+        "https://upload.wikimedia.org/wikipedia/commons/1/1d/Miniaturk_009.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original",
+        "https://cdntst.travelshowtime.com//contents/img/galeri/artemistemple.jpg",
+        "https://www.grunge.com/img/gallery/the-untold-truth-of-the-temple-of-artemis/intro-1632322815.webp",
+        "https://thehill.com/wp-content/uploads/sites/2/2025/10/68ea3c61201b45.15674940.jpeg?w=960&h=540&crop=1",
+        "https://cdn.britannica.com/54/150954-050-F8D14782/Night-view-Parthenon-Athens.jpg?w=400&h=300&c=crop",
+        "https://i0.wp.com/www.legacytoursandtravel.com/wp-content/uploads/2025/07/parthenon-2.png?w=1080&ssl=1"
+      ],
+      "articles": [
+        {
+          "title": "British Museum — Temple of Artemis Objects",
+          "url": "https://www.britishmuseum.org/collection/object/G_1874-0710-121"
+        },
+        {
+          "title": "World History Encyclopedia — The Seven Wonders",
+          "url": "https://www.worldhistory.org/The_Seven_Wonders/"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "slug": "mausoleum-at-halicarnassus",
+      "name": "Mausoleum at Halicarnassus",
+      "location": "Halicarnassus, modern Bodrum, Türkiye",
+      "era": "c. 353–350 BC",
+      "shortDescription": "A monumental tomb built for Mausolus, combining Greek, Anatolian, Persian, and Egyptian architectural influences with an extraordinary program of sculpture.",
+      "architecture": {
+        "howItWasBuilt": "The monument was constructed as a huge stepped podium supporting a colonnaded structure, a stepped pyramidal roof, and a four-horse chariot sculpture at the summit.",
+        "materials": [
+          "Marble",
+          "Stone",
+          "Marble sculpture",
+          "Decorative reliefs"
+        ],
+        "engineeringDesign": "Its composition combined a massive podium, an Ionic-style colonnade, a stepped roof, and a monumental quadriga. The design integrated architecture and sculpture into one vertically layered monument.",
+        "height": "Common reconstructions place the main monument at roughly 40–45 m, although reconstructed dimensions vary.",
+        "size": "The base is estimated at approximately 38.4 m by 32.5 m."
+      },
+      "engineeringMarvel": "The Mausoleum combined a massive architectural structure with an enormous quantity of sculptural decoration and a monumental quadriga at the top.",
+      "interestingFacts": [
+        "The modern word 'mausoleum' comes from Mausolus and the monument's fame.",
+        "The building combined Greek, Persian, Anatolian, and Egyptian influences.",
+        "A four-horse chariot sculpture stood at the summit.",
+        "Many sculptural fragments survive in museums, including the British Museum.",
+        "The monument was damaged and eventually destroyed by a series of earthquakes."
+      ],
+      "galleryImages": [
+        "https://media.istockphoto.com/id/119494203/vector/mausoleum-of-halicarnassus.jpg?s=612x612&w=0&k=20&c=9PtAnojByNBKHn_NxCbet47bDNVmX-SCV5j6FNzkPnw=",
+        "https://www.worldhistory.org/img/r/p/1000x1200/12902.png.webp?v=1764191468",
+        "https://www.thevintagenews.com/wp-content/uploads/sites/65/2024/04/mausoleum-of-halicarnassus-93076-640x410.png",
+        "https://www.thoughtco.com/thmb/PZ1EVyJWI1wAVEF0Hv-hm8B-anU=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/mausoleum-58b9e0085f9b58af5cbcc6e2.jpg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_bDTfG8ck6XJIBqDAbbt4zelix93Y9tYyd1ZW-f6h7144DRfab3UB1vY&s=10",
+        "https://geekydementia.wordpress.com/wp-content/uploads/2014/11/the_mausoleum_of_halicarnassus_by_pervandr-d3h093q.jpg"
+      ],
+      "articles": [
+        {
+          "title": "British Museum — Mausoleum of Halikarnassos",
+          "url": "https://www.britishmuseum.org/collection/galleries/mausoleum-halikarnassos"
+        },
+        {
+          "title": "University of Southern Denmark — Maussolleion Architecture",
+          "url": "https://www.sdu.dk/en/om-sdu/institutter-centre/iks/forskning/forskningsprojekter/halikarnassos/plan/mausolleion"
+        },
+        {
+          "title": "Perseus Digital Library — Maussolleion",
+          "url": "https://www.perseus.tufts.edu/hopper/artifact?name=Halikarnassos%2C+Maussolleion&object=Building"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "slug": "colossus-of-rhodes",
+      "name": "Colossus of Rhodes",
+      "location": "Rhodes, Greece",
+      "era": "c. 292–280 BC",
+      "shortDescription": "A colossal bronze statue of the sun god Helios, built to celebrate the successful defense of Rhodes after a major siege.",
+      "architecture": {
+        "howItWasBuilt": "The statue was constructed around an internal support structure and assembled section by section. Bronze plates were attached to the framework while construction supports and earthworks were used as the statue rose.",
+        "materials": [
+          "Bronze plates",
+          "Iron framework and supports",
+          "Stone blocks",
+          "Stone pedestal"
+        ],
+        "engineeringDesign": "A structural framework supported the large bronze exterior. The statue was built in sections, with the bronze skin attached to the internal structure as the monument grew.",
+        "height": "Approximately 32–33 m for the statue itself.",
+        "size": "Some ancient and later reconstructions propose a monumental pedestal, but the exact pedestal height and total monument dimensions remain uncertain."
+      },
+      "engineeringMarvel": "The Colossus demonstrated how ancient craftsmen could combine a massive internal structure with large bronze plates to create a monumental metal statue.",
+      "interestingFacts": [
+        "The statue represented Helios, the sun god.",
+        "It was built after Rhodes successfully resisted a major siege.",
+        "The statue stood for only about half a century before an earthquake caused it to collapse.",
+        "The famous image of the Colossus standing with one leg on each side of the harbor is not supported by reliable historical evidence.",
+        "The statue was likely erected on or near a substantial base rather than spanning the harbor entrance."
+      ],
+      "galleryImages": [
+        "https://hips.hearstapps.com/pop.h-cdn.co/assets/16/01/1452202029-colossus-of-rhodes-project.jpg?resize=980:*",
+        "https://images.squarespace-cdn.com/content/v1/57125c2c2b8dde54a34b537f/1549117388785-4YC2W0D672RTG8T0FGN1/colossusd.jpg?format=1000w",
+        "https://disappointedtourist.org/wp-content/uploads/2024/01/248CR-1152x1536.jpg",
+        "https://e498h76z5mp.exactdn.com/wp-content/uploads/2017/04/Colossus-of-Rhodes.jpg?quality=65&w=510",
+        "https://cdn.thecollector.com/wp-content/uploads/2023/03/galle-colossus-rhodes-sun-apollo-rose-rhodes-coin.jpg?width=767&height=431&quality=100&dpr=2",
+        "https://greekcitytimes.com/wp-content/uploads/2021/07/Colossus-of-rhodes-599x600.jpg"
+      ],
+      "articles": [
+        {
+          "title": "World History Encyclopedia — The Seven Wonders",
+          "url": "https://www.worldhistory.org/The_Seven_Wonders/"
+        },
+        {
+          "title": "World History Encyclopedia — Philo of Byzantium's On the Seven Wonders",
+          "url": "https://www.worldhistory.org/article/2257/philo-of-byzantiums-on-the-seven-wonders/"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "slug": "lighthouse-of-alexandria",
+      "name": "Lighthouse of Alexandria",
+      "location": "Alexandria, Egypt",
+      "era": "c. 3rd century BC",
+      "shortDescription": "A monumental lighthouse built on the island of Pharos to guide ships safely into Alexandria's harbor.",
+      "architecture": {
+        "howItWasBuilt": "The lighthouse was built as a tall masonry tower divided into three major sections: a square lower level, an octagonal middle section, and a circular upper section.",
+        "materials": [
+          "Large stone blocks",
+          "Light-colored masonry",
+          "Stone or marble decorative elements",
+          "Lead used in some structural connections according to historical descriptions"
+        ],
+        "engineeringDesign": "Its three-level design created a stable and highly visible tower. A fire at the top served as a navigational beacon at night, while reflective technology was associated with its daytime signaling.",
+        "height": "Estimated to have been over 100 m; exact height is uncertain and ancient estimates vary considerably.",
+        "size": "A very large multi-level tower dominating the entrance to Alexandria's harbor. Exact original dimensions remain debated."
+      },
+      "engineeringMarvel": "The Pharos combined monumental masonry, a highly visible multi-level tower, and a navigational lighting system to help ships approach Alexandria safely.",
+      "interestingFacts": [
+        "It stood on the island of Pharos, giving rise to the name associated with lighthouses in several languages.",
+        "It was one of the tallest structures in the ancient world.",
+        "A fire was maintained at the top to guide ships at night.",
+        "The lighthouse survived for centuries before being destroyed by a series of earthquakes.",
+        "The Qaitbay Citadel now occupies approximately the same area, and stones from the ancient site may have been reused."
+      ],
+      "galleryImages": [
+        "https://i0.wp.com/the-past.com/wp-content/uploads/2025/02/post-1_image0-20.jpg?resize=1024%2C700&ssl=1",
+        "https://res.cloudinary.com/aenetworks/image/upload/c_fill,ar_2,w_1080,h_540,g_auto/dpr_auto/f_auto/q_auto:eco/v1/1498776792_l0kjh1?_a=BAVMn6E80",
+        "https://www.egypttoursportal.com/images/2025/04/The-Lighthouse-of-Alexandria-Built-Egypt-Tours-Portal.jpg",
+        "https://www.egypttoursportal.com/images/2025/04/The-Lighthouse-of-Alexandria-Time-of-Creation-Egypt-Tours-Portal.jpg",
+        "https://egyptunitedtours.com/wp-content/uploads/2024/07/Lighthouse-of-Alexandria.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/4/48/Miniuni_Ostrava_-_Lighthouse_of_Alexandria.JPG?utm_source=simple.wikipedia.org&utm_campaign=index&utm_content=original"
+      ],
+      "articles": [
+        {
+          "title": "World History Encyclopedia — The Seven Wonders",
+          "url": "https://www.worldhistory.org/The_Seven_Wonders/"
+        },
+        {
+          "title": "Wikipedia — Lighthouse of Alexandria",
+          "url": "https://en.wikipedia.org/wiki/Lighthouse_of_Alexandria"
+        }
+      ]
+    }
+  ]
+}
