@@ -15,6 +15,7 @@ const wonder = {
     image:
         "https://cdn.britannica.com/60/168960-050-766C48B3/Artist-re-creation-Mausoleum-of-Halicarnassus.jpg",
     theme: "stone",
+    imagePosition: "center 13%",
 };
 </script>
 

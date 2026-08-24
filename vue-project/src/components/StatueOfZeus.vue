@@ -15,6 +15,7 @@ const wonder = {
     image:
         "https://upload.wikimedia.org/wikipedia/commons/6/66/Le_Jupiter_Olympien_ou_l%27art_de_la_sculpture_antique.jpg",
     theme: "gold",
+    imagePosition: "center 25%",
 };
 </script>
 
