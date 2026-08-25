@@ -15,7 +15,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--color-sand);
+    background: var(--color-gold);
     border-radius: 10px;
 }
 

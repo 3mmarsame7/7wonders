@@ -48,11 +48,18 @@ const closeMenu = () => {
 
 onMounted(() => {
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
 });
 
 onUnmounted(() => {
     window.removeEventListener("scroll", handleScroll);
+    window.removeEventListener("resize", handleResize);
 });
+const handleResize = () => {
+    if (window.innerWidth > 768) {
+        menuOpen.value = false;
+    }
+};
 </script>
 
 <style scoped>
@@ -245,17 +252,29 @@ onUnmounted(() => {
 .mobile-menu {
     position: fixed;
     inset: 0;
+
     z-index: -1;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 38px;
-    background: #101820;
+
+    width: 100%;
+    height: 100vh;
+
+    padding: 100px 30px 40px;
+
+    background: rgba(16, 24, 32, 0.98);
+
     opacity: 0;
     pointer-events: none;
+
     transform: translateY(-20px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
 }
 
 .mobile-menu.open {
@@ -264,26 +283,56 @@ onUnmounted(() => {
     transform: translateY(0);
 }
 
+
+/* Links List */
+
 .mobile-menu a {
-    color: white;
-    font-size: 30px;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: min(80%, 400px);
+
+    padding: 20px 0;
+
+    color: rgba(255, 255, 255, 0.85);
+
+    font-size: 24px;
     font-weight: 700;
-    letter-spacing: 0.1em;
+
+    letter-spacing: 0.14em;
+
     text-decoration: none;
-    transition: color 0.3s ease, transform 0.3s ease;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease,
+        border-color 0.3s ease;
 }
+
+
+/* Hover */
 
 .mobile-menu a:hover {
-    color: var(--color-sand);
+    color:  white;
     transform: translateX(8px);
+    border-color: var(--color-sand);
 }
 
-/* Mobile active link */
+
+/* Active Link */
+
 .mobile-menu a.router-link-active {
     color: var(--color-sand);
+    /* border-color: var(--color-sand); */
 }
-
-
+.mobile-menu a.router-link-active::after {
+    width: 100%;
+}
 /* =====================================================
    RESPONSIVE
 ===================================================== */
