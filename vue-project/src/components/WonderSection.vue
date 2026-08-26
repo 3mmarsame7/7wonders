@@ -627,7 +627,7 @@ onUnmounted(() => {
 ===================================================== */
 
 .wonder-description {
-    max-width: 580px;
+    max-width: 680px;
 
     margin-top: 38px;
 
@@ -635,12 +635,14 @@ onUnmounted(() => {
 
     font-size:
         clamp(
-            17px,
+            21px,
             1.4vw,
             20px
         );
 
     line-height: 1.75;
+    letter-spacing: 0.01em;
+
 }
 
 
@@ -658,7 +660,7 @@ onUnmounted(() => {
     padding-top: 25px;
 
     border-top:
-        1px solid
+        2px solid
         var(--section-line);
 }
 
@@ -703,10 +705,10 @@ onUnmounted(() => {
     margin-top: 42px;
 
     padding:
-        6px
-        6px
-        6px
-        22px;
+        8px
+        8px
+        8px
+        26px;
 
     border:
         1px solid
@@ -717,7 +719,6 @@ onUnmounted(() => {
     background: transparent;
 
     color: var(--section-text);
-
     cursor: pointer;
 
     transition:
@@ -727,16 +728,16 @@ onUnmounted(() => {
 }
 
 .discover-button > span {
-    font-size: 12px;
+    font-size: 15px;
 
-    font-weight: 700;
+    font-weight: 800;
 
-    letter-spacing: 0.16em;
+    letter-spacing: 0.14em;
 }
 
 .button-arrow {
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
 
     display: grid;
 
@@ -748,7 +749,9 @@ onUnmounted(() => {
 
     color: var(--section-bg);
 
-    font-size: 18px;
+    font-size: 30px;
+    font-weight: 900;
+    line-height: 1;
 
     transition:
         transform 0.4s cubic-bezier(
@@ -790,7 +793,7 @@ onUnmounted(() => {
 
     bottom: 0;
 
-    height: 1px;
+    height: 2px;
 
     background: var(--section-line);
 
@@ -799,7 +802,7 @@ onUnmounted(() => {
     transform-origin: left;
 
     transition:
-        transform 1.2s cubic-bezier(
+        transform 1.9s cubic-bezier(
             0.22,
             1,
             0.36,
@@ -834,6 +837,7 @@ onUnmounted(() => {
 
     .wonder-content {
         max-width: 800px;
+        margin: 0 auto;
     }
 
     .background-number {

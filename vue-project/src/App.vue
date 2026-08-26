@@ -18,7 +18,7 @@ import WonderFinderPage from "./views/WonderFinderPage.vue";
 import LoadingScreen from "./components/LoadingScreen.vue";
 
 /* =====================================================
-   STATE
+    STATE
 ===================================================== */
 const activeWonder = ref("01");
 const wonders = ref([]);
@@ -55,12 +55,12 @@ const handleFilterChange = (filters) => {
 let observer;
 
 /* =====================================================
-   API
+    API
 ===================================================== */
 const API_URL = "https://www.world-wonders-api.org/v0/wonders";
 
 /* =====================================================
-   WONDER THEMES
+    WONDER THEMES
 ===================================================== */
 const getWonderTheme = (name) => {
   const title = name?.toLowerCase() || "";
@@ -74,21 +74,27 @@ const getWonderTheme = (name) => {
   return "sand";
 };
 
+const imagePositions = {
+  "great pyramid": "center 70%",
+  "hanging gardens": "90% 50%",
+  "temple of artemis": "70% 55%",
+  "statue of zeus": "center 45%",
+  "mausoleum": "70% 60%",
+  "colossus": "90% 35%",
+  "lighthouse": "center 40%",
+};
+
 const getImagePosition = (name) => {
   const title = name?.toLowerCase() || "";
 
-  if (title.includes("great pyramid")) return "center 70%";
-  if (title.includes("hanging gardens")) return "90% 50%";
-  if (title.includes("temple of artemis")) return "70% 55%";
-  if (title.includes("statue of zeus")) return "center 45%";
-  if (title.includes("mausoleum")) return "70% 60%";
-  if (title.includes("colossus")) return "90%  35%";
-  if (title.includes("lighthouse")) return "center 40%";
+  const key = Object.keys(imagePositions).find((key) =>
+    title.includes(key)
+  );
 
-  return "center center";
+  return imagePositions[key] || "center center";
 };
 /* =====================================================
-   WONDER Map
+    WONDER Map
 ===================================================== */
 const getCoordinatesFromGoogleMaps = (url) => {
   if (!url) return null;
@@ -103,7 +109,7 @@ const getCoordinatesFromGoogleMaps = (url) => {
   };
 };
 /* =====================================================
-   FETCH WONDERS
+    FETCH WONDERS
 ===================================================== */
 const fetchWonders = async () => {
   try {
@@ -164,7 +170,7 @@ const fetchWonders = async () => {
 };
 
 /* =====================================================
-   MOUNT
+    MOUNT
 ===================================================== */
 onMounted(async () => {
   await fetchWonders();

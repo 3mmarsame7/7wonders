@@ -102,7 +102,10 @@
 
               <div
                 class="wonder-visual"
-                :style="{ backgroundImage: `url(${activeWonder.image})` }"
+                :style="{
+                  backgroundImage: `url(${activeWonder.image})`,
+                  backgroundPosition: activeImagePosition
+                }"
               ></div>
 
               <div class="image-overlay"></div>
@@ -365,9 +368,46 @@ const wonders = [
       "https://cdn.britannica.com/07/172307-050-4D3BA855/Pharos-Alexandria.jpg"
   }
 ];
+/* =========================
+   IMAGE POSITIONS
+========================= */
+
+const imagePositions = {
+
+  "great pyramid of giza": "center center",
+
+  "hanging gardens of babylon": "center center",
+
+  "temple of artemis": "center 5%",
+
+  "statue of zeus": "center 25%",
+
+  "mausoleum at halicarnassus": "center 5%",
+
+  "colossus of rhodes": "65% 10%",
+
+  "lighthouse of alexandria": "center 5%",
+
+};
 
 const activeWonder = computed(() => wonders[activeIndex.value]);
 
+/* =========================
+   ACTIVE IMAGE POSITION
+========================= */
+
+const activeImagePosition = computed(() => {
+
+  if (!activeWonder.value?.name) {
+    return "center center";
+  }
+
+  return (
+    imagePositions[activeWonder.value.name.toLowerCase()] ||
+    "center center"
+  );
+
+});
 const statusClass = computed(() => {
   if (activeWonder.value.status === "STILL STANDING") {
     return "alive";
