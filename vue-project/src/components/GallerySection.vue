@@ -176,7 +176,7 @@ const handleKeydown = (event) => {
 .gallery-section {
     margin-top: 40px;
     padding-top: 25px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 3px solid rgba(0, 0, 0, 0.5);
 }
 
 

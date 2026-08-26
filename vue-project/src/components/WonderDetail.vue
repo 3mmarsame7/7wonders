@@ -316,20 +316,74 @@ const goBack = () => {
     color: var(--section-text);
 }
 
-/* Themes */
-.theme-sand { --section-bg: #f1e8d5; --section-text: #17130e; --section-muted: #5e574e; --section-accent: #a77c2d; }
-.theme-garden { --section-bg: #dfe7d8; --section-text: #172019; --section-muted: #536056; --section-accent: #58745c; }
-.theme-marble { --section-bg: #e8e7e2; --section-text: #18191a; --section-muted: #5d6062; --section-accent: #7b8490; }
-.theme-gold { --section-bg: #211c14; --section-text: #f4ead5; --section-muted: #bdb19a; --section-accent: #d5a94f; }
-.theme-stone { --section-bg: #cfc9bd; --section-text: #24231f; --section-muted: #68645c; --section-accent: #765f43; }
-.theme-ocean { --section-bg: #102a35; --section-text: #edf4f2; --section-muted: #a8bcbd; --section-accent: #6eb8b2; }
-.theme-sunset { --section-bg: #34221d; --section-text: #f8eee4; --section-muted: #c7afa0; --section-accent: #e59b61; }
+/* =====================================================
+   THEMES
+===================================================== */
+
+.theme-sand {
+    --section-bg: #f1e8d5;
+    --section-text: #17130e;
+    --section-muted: #5e574e;
+    --section-accent: #a77c2d;
+}
+
+.theme-garden {
+    --section-bg: #dfe7d8;
+    --section-text: #172019;
+    --section-muted: #536056;
+    --section-accent: #58745c;
+}
+
+.theme-marble {
+    --section-bg: #e8e7e2;
+    --section-text: #18191a;
+    --section-muted: #5d6062;
+    --section-accent: #7b8490;
+}
+
+.theme-gold {
+    --section-bg: #211c14;
+    --section-text: #f4ead5;
+    --section-muted: #bdb19a;
+    --section-accent: #d5a94f;
+}
+
+.theme-stone {
+    --section-bg: #cfc9bd;
+    --section-text: #24231f;
+    --section-muted: #68645c;
+    --section-accent: #765f43;
+}
+
+.theme-ocean {
+    --section-bg: #102a35;
+    --section-text: #edf4f2;
+    --section-muted: #a8bcbd;
+    --section-accent: #6eb8b2;
+}
+
+.theme-sunset {
+    --section-bg: #34221d;
+    --section-text: #f8eee4;
+    --section-muted: #c7afa0;
+    --section-accent: #e59b61;
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
 
 .detail-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 40px 7%;
 }
+
+
+/* =====================================================
+   BACK BUTTON
+===================================================== */
 
 .back-button {
     background: transparent;
@@ -338,9 +392,11 @@ const goBack = () => {
     padding: 10px 25px;
     border-radius: 30px;
     cursor: pointer;
-    font-size: 12px;
+
+    font-size: 20px;
     font-weight: 600;
     letter-spacing: 1px;
+
     transition: all 0.3s ease;
     margin-bottom: 40px;
 }
@@ -349,6 +405,11 @@ const goBack = () => {
     background: var(--section-accent);
     color: var(--section-bg);
 }
+
+
+/* =====================================================
+   DETAIL IMAGE
+===================================================== */
 
 .detail-image {
     position: relative;
@@ -361,50 +422,83 @@ const goBack = () => {
     width: 100%;
     height: 500px;
     object-fit: cover;
-    /* transform-origin: center center; */
 }
+
+
+/* =====================================================
+   IMAGE NUMBER
+===================================================== */
 
 .image-number {
     position: absolute;
     bottom: 30px;
     left: 30px;
+
     color: white;
+
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
 .image-number span {
-    font-size: 12px;
+    font-size: 20px;
     letter-spacing: 2px;
     opacity: 0.8;
 }
 
 .image-number strong {
-    font-size: 24px;
+    font-size: 32px;
 }
+
+
+/* =====================================================
+   CATEGORY
+===================================================== */
 
 .detail-category {
     color: var(--section-accent);
-    font-size: 12px;
+
+    font-size: 20px;
     font-weight: 700;
     letter-spacing: 3px;
+
     margin-bottom: 15px;
 }
 
+
+/* =====================================================
+   TITLE
+===================================================== */
+
 .detail-content h1 {
-    font-size: clamp(3rem, 5vw, 5rem);
+    font-size: clamp(3rem, 5vw, 80px);
+
     margin: 0 0 20px 0;
     line-height: 0.9;
 }
 
+
+/* =====================================================
+   DESCRIPTION
+===================================================== */
+
 .detail-description {
-    font-size: 1.2rem;
-    line-height: 1.8;
+    font-size: 1.9rem;
+    line-height: 1.9;
+
     color: var(--section-muted);
-    max-width: 800px;
+
+    max-width: 850px;
     margin-bottom: 40px;
+
+    font-weight: 450;
 }
+
+
+/* =====================================================
+   HISTORY
+===================================================== */
 
 .history-content {
     display: grid;
@@ -414,30 +508,47 @@ const goBack = () => {
 
 .history-item {
     padding: 20px 0;
-    border-top: 1px solid rgba(0,0,0,0.1);
+    border-top: 3px solid rgba(0, 0, 0, 0.5);
 }
 
 .history-item span {
     display: block;
+
     color: var(--section-accent);
-    font-size: 11px;
+
+    font-size: 20px;
     font-weight: 700;
-    letter-spacing: 2px;
-    margin-bottom: 8px;
+    letter-spacing: 2.5px;
+
+    margin-bottom: 10px;
 }
 
 .history-item p {
     margin: 0;
-    line-height: 1.8;
+
+    line-height: 1.9;
+
     color: var(--section-muted);
+
+    font-size: 24px;
+    font-weight: 450;
 }
+
+
+/* =====================================================
+   META
+===================================================== */
 
 .detail-meta {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+
     gap: 30px;
+
     padding: 30px 0;
-    border-top: 1px solid rgba(0,0,0,0.1);
+
+    border-top: 3px solid rgba(0, 0, 0, 0.5);
+
     margin: 20px 0;
 }
 
@@ -449,19 +560,26 @@ const goBack = () => {
 
 .detail-meta span {
     color: var(--section-muted);
-    font-size: 10px;
+
+    font-size: 18px;
     font-weight: 700;
     letter-spacing: 2px;
 }
 
 .detail-meta strong {
     color: var(--section-text);
-    font-size: 1rem;
+    font-size: 24px;
 }
+
+
+/* =====================================================
+   MAP
+===================================================== */
 
 .map-wrapper {
     margin-top: 20px;
 }
+
 
 /* =====================================================
    NEW SECTIONS
@@ -474,8 +592,7 @@ const goBack = () => {
     margin-top: 40px;
     padding-top: 25px;
 
-    /* نفس الخط الفاصل الموجود في الـ History */
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 3px solid rgba(0, 0, 0, 0.5);
 }
 
 
@@ -489,20 +606,28 @@ const goBack = () => {
 
 .section-heading > span {
     display: block;
+
     color: var(--section-accent);
-    font-size: 10px;
+
+    font-size: 18px;
     font-weight: 700;
     letter-spacing: 2.5px;
+
     margin-bottom: 8px;
 }
 
 .section-heading h2 {
     margin: 0;
+
     color: var(--section-text);
-    font-size: 22px;
+
+    font-size: 30px;
     font-weight: 600;
+
     line-height: 1.3;
 }
+
+
 /* =====================================================
    ARCHITECTURE & ENGINEERING
 ===================================================== */
@@ -510,34 +635,50 @@ const goBack = () => {
 .architecture-content {
     margin-top: 40px;
     padding-top: 25px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+    border-top:3px solid rgba(0, 0, 0, 0.5);
 }
 
 .architecture-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+
     gap: 1px;
-    background: rgba(0, 0, 0, 0.08);
-    border: 1px solid rgba(0, 0, 0, 0.08);
+
+    background: rgba(0, 0, 0, 0.5);
+
+    border: 1px solid rgba(0, 0, 0, 0.5);
+
     border-radius: 10px;
+
     overflow: hidden;
 }
 
 .architecture-item {
     position: relative;
+
     padding: 25px 28px;
+
     background: var(--section-bg);
-    transition: transform 0.3s ease, background 0.3s ease;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease;
 }
 
 .architecture-item::before {
     content: "";
+
     position: absolute;
+
     left: 0;
     top: 25px;
+
     width: 3px;
     height: 28px;
+
     background: var(--section-accent);
+
     border-radius: 0 3px 3px 0;
 }
 
@@ -547,18 +688,27 @@ const goBack = () => {
 
 .architecture-item span {
     display: block;
+
     color: var(--section-accent);
-    font-size: 10px;
+
+    font-size: 19px;
     font-weight: 700;
-    letter-spacing: 1.8px;
-    margin-bottom: 10px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 12px;
 }
 
 .architecture-item p {
     margin: 0;
+
     color: var(--section-muted);
-    font-size: 14px;
-    line-height: 1.8;
+
+    font-size: 23.5px;
+
+    line-height: 1.85;
+
+    font-weight: 450;
 }
 
 
@@ -568,9 +718,7 @@ const goBack = () => {
 
 .materials-list {
     display: flex;
-
     flex-wrap: wrap;
-
     gap: 10px;
 }
 
@@ -585,7 +733,7 @@ const goBack = () => {
 
     color: var(--section-muted);
 
-    font-size: 11px;
+    font-size: 19px;
 
     transition:
         color 0.3s ease,
@@ -621,9 +769,11 @@ const goBack = () => {
 
     color: var(--section-muted);
 
-    font-size: 15px;
+    font-size: 24px;
 
-    line-height: 1.8;
+    line-height: 1.9;
+
+    font-weight: 450;
 }
 
 
@@ -647,7 +797,7 @@ const goBack = () => {
 
     color: var(--section-muted);
 
-    font-size: 15px;
+    font-size: 23px;
 
     line-height: 1.8;
 }
@@ -662,7 +812,108 @@ const goBack = () => {
 
     color: var(--section-accent);
 
-    font-size: 16px;
+    font-size: 24px;
+}
+
+
+/* =====================================================
+   ARTICLES
+===================================================== */
+
+.articles-section {
+    margin-top: 40px;
+
+    padding-top: 25px;
+
+    border-top: 3px solid rgba(0, 0, 0, 0.5);
+}
+
+.articles-list {
+    display: grid;
+    gap: 12px;
+}
+
+.article-item {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 16px 0;
+
+    text-decoration: none;
+
+    transition: all 0.3s ease;
+}
+
+.article-content {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.article-content span {
+    color: var(--section-accent);
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+}
+
+.article-content p {
+    margin: 0;
+
+    color: var(--section-muted);
+
+    font-size: 22px;
+
+    line-height: 1.5;
+
+    transition: color 0.3s ease;
+}
+
+.article-arrow {
+    color: var(--section-muted);
+
+    font-size: 28px;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.article-item:hover .article-content p {
+    color: var(--section-accent);
+}
+
+.article-item:hover .article-arrow {
+    color: var(--section-accent);
+
+    transform: translate(3px, -3px);
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .detail-image img {
+        height: 300px;
+    }
+
+    .detail-meta {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .detail-content h1 {
+        font-size: 2.5rem;
+    }
 }
 
 
@@ -685,107 +936,36 @@ const goBack = () => {
     }
 
     .architecture-item {
-        padding: 12px 0;
+        padding: 22px 24px;
+    }
+
+    .architecture-item::before {
+        top: 22px;
     }
 
     .section-heading {
-        margin-bottom: 18px;
+        margin-bottom: 20px;
     }
 
     .section-heading h2 {
-        font-size: 16px;
+        font-size: 27px;
     }
 
     .architecture-item p,
     .engineering-section p,
     .facts-section li {
-        font-size: 14px;
+        font-size: 22px;
+    }
+
+    .architecture-item p {
+        line-height: 1.7;
     }
 
     .material-tag {
-        font-size: 10px;
+        font-size: 18px;
+
         padding: 7px 12px;
     }
-}
-
-/* =====================================================
-   ARTICLES
-===================================================== */
-
-.articles-section {
-    margin-top: 40px;
-    padding-top: 25px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.articles-list {
-    display: grid;
-    gap: 12px;
-}
-
-.article-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 16px 0;
-
-    text-decoration: none;
-
-    transition: all 0.3s ease;
-}
-
-.article-content {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.article-content span {
-    color: var(--section-accent);
-
-    font-size: 9px;
-    font-weight: 700;
-
-    letter-spacing: 1.5px;
-}
-
-.article-content p {
-    margin: 0;
-
-    color: var(--section-muted);
-
-    font-size: 14px;
-    line-height: 1.5;
-
-    transition: color 0.3s ease;
-}
-
-.article-arrow {
-    color: var(--section-muted);
-
-    font-size: 20px;
-
-    transition:
-        color 0.3s ease,
-        transform 0.3s ease;
-}
-
-.article-item:hover .article-content p {
-    color: var(--section-accent);
-}
-
-.article-item:hover .article-arrow {
-    color: var(--section-accent);
-    transform: translate(3px, -3px);
-}
-
-
-/* =====================================================
-   ARTICLES - MOBILE
-===================================================== */
-
-@media (max-width: 600px) {
 
     .articles-section {
         margin-top: 35px;
@@ -797,64 +977,23 @@ const goBack = () => {
     }
 
     .article-content p {
-        font-size: 13px;
+        font-size: 21px;
     }
 
     .article-arrow {
-        font-size: 18px;
+        font-size: 26px;
     }
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .detail-image img {
-        height: 300px;
-    }
-    
-    .detail-meta {
-        grid-template-columns: 1fr 1fr;
-    }
-    
-    .detail-content h1 {
-        font-size: 2.5rem;
-    }
-}
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
 
 @media (max-width: 480px) {
+
     .detail-meta {
         grid-template-columns: 1fr;
-    }
-}
-@media (max-width: 600px) {
-
-    .architecture-content {
-        margin-top: 35px;
-        padding-top: 20px;
-    }
-
-    .architecture-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .architecture-item {
-        padding: 22px 24px;
-    }
-
-    .architecture-item::before {
-        top: 22px;
-    }
-
-    .architecture-item p {
-        font-size: 14px;
-        line-height: 1.7;
-    }
-
-    .section-heading {
-        margin-bottom: 20px;
-    }
-
-    .section-heading h2 {
-        font-size: 19px;
     }
 }
 </style>

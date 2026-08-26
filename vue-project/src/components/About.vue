@@ -1,4 +1,3 @@
-
 ```vue
 <script setup>
 import Navbar from "../components/Navbar.vue";
@@ -62,10 +61,8 @@ import Footer from "../components/Footer.vue";
       </div>
 
       <div class="hero-image">
-        <img
-          src="https://images.unsplash.com/photo-1568322445389-f64ac2515020?auto=format&fit=crop&w=1200&q=85"
-          alt="Ancient Pyramid"
-        />
+        <img src="https://images.unsplash.com/photo-1568322445389-f64ac2515020?auto=format&fit=crop&w=1200&q=85"
+          alt="Ancient Pyramid" />
         <div class="image-overlay"></div>
       </div>
 
@@ -166,10 +163,7 @@ import Footer from "../components/Footer.vue";
         <div class="team-card">
 
           <div class="member-image">
-            <img
-              src="../image/amaar.jpeg"
-              alt="Team Member"
-            />
+            <img src="../image/amaar.jpeg" alt="Team Member" />
           </div>
 
           <h3>Ammar Sameh</h3>
@@ -182,12 +176,13 @@ import Footer from "../components/Footer.vue";
             <li>Team Leader</li>
             <li>Api and Data Management</li>
             <li>Landing Page</li>
-          
+
           </ul>
 
           <div class="social">
-           
-            <a href="https://www.linkedin.com/in/ammarsame7?utm_source=share_via&utm_content=profile&utm_medium=member_android">LinkedIn</a>
+
+            <a
+              href="https://www.linkedin.com/in/ammarsame7?utm_source=share_via&utm_content=profile&utm_medium=member_android">LinkedIn</a>
           </div>
 
         </div>
@@ -195,29 +190,55 @@ import Footer from "../components/Footer.vue";
         <div class="team-card">
 
           <div class="member-image">
-            <img
-              src="../image/basel.jpeg"
-              alt="Team Member"
-            />
+            <img src="../image/waleed.jpeg" alt="Team Member" />
+          </div>
+
+          <h3>mohamed waleed</h3>
+
+          <span class="role">
+            Frontend Developer
+          </span>
+
+          <ul>
+            <li>Wonders Main Page</li>
+            <li>UI-UX</li>
+            <li>Animation and Styling</li>
+
+
+          </ul>
+
+          <div class="social">
+
+            <a
+              href="https://www.linkedin.com/in/mohamed-waled-elsayed?utm_source=share_via&utm_content=profile&utm_medium=member_android">LinkedIn</a>
+          </div>
+
+        </div>
+
+        <div class="team-card">
+
+          <div class="member-image">
+            <img src="../image/basel.jpeg" alt="Team Member" />
           </div>
 
           <h3>Basel Shanshan</h3>
 
           <span class="role">
-             Frontend Developer
+            Frontend Developer
           </span>
 
           <ul>
-            
+
             <li>About Page</li>
             <li>Footer Component</li>
             <li>Time Travel Page</li>
-            
+
           </ul>
 
           <div class="social">
-            
-            <a href="https://www.linkedin.com/in/basel-shanshan-566a22415?utm_source=share_via&utm_content=profile&utm_medium=member_ios">LinkedIn</a>
+
+            <a
+              href="https://www.linkedin.com/in/basel-shanshan-566a22415?utm_source=share_via&utm_content=profile&utm_medium=member_ios">LinkedIn</a>
           </div>
 
         </div>
@@ -226,10 +247,7 @@ import Footer from "../components/Footer.vue";
         <div class="team-card">
 
           <div class="member-image">
-            <img
-              src="../image/malak.jpeg"
-              alt="Team Member"
-            />
+            <img src="../image/malak.jpeg" alt="Team Member" />
           </div>
 
           <h3>Malak Salama</h3>
@@ -245,8 +263,9 @@ import Footer from "../components/Footer.vue";
           </ul>
 
           <div class="social">
-           
-            <a href="https://www.linkedin.com/in/malak-salama-7441b23b0?utm_source=share_via&utm_content=profile&utm_medium=member_android">LinkedIn</a>
+
+            <a
+              href="https://www.linkedin.com/in/malak-salama-7441b23b0?utm_source=share_via&utm_content=profile&utm_medium=member_android">LinkedIn</a>
           </div>
 
         </div>
@@ -255,28 +274,26 @@ import Footer from "../components/Footer.vue";
         <div class="team-card">
 
           <div class="member-image">
-            <img
-              src="../image/meram.jpeg"
-              alt="Team Member"
-            />
+            <img src="../image/meram.jpeg" alt="Team Member" />
           </div>
 
           <h3>meram ehab</h3>
 
           <span class="role">
-             Frontend Developer
+            Frontend Developer
           </span>
 
           <ul>
             <li>Wonders Explorer</li>
             <li>Wonders Pages</li>
             <li>Vue.js Support</li>
-          
+
           </ul>
 
           <div class="social">
-            
-            <a href="https://www.linkedin.com/in/meram-ehab-35317a334?utm_source=share_via&utm_content=profile&utm_medium=member_android">LinkedIn</a>
+
+            <a
+              href="https://www.linkedin.com/in/meram-ehab-35317a334?utm_source=share_via&utm_content=profile&utm_medium=member_android">LinkedIn</a>
           </div>
 
         </div>
@@ -285,43 +302,7 @@ import Footer from "../components/Footer.vue";
         <div class="team-card">
 
           <div class="member-image">
-            <img
-              src="../image/waleed.jpeg"
-              alt="Team Member"
-            />
-          </div>
-
-          <h3>mohamed waleed</h3>
-
-          <span class="role">
-             Frontend Developer
-          </span>
-
-          <ul>
-            <li>Wonders Main Page</li>
-            <li>UI-UX</li>
-            <li>Animation and Styling</li>
-            
-            
-          </ul>
-
-          <div class="social">
-            
-            <a href="https://www.linkedin.com/in/mohamed-waled-elsayed?utm_source=share_via&utm_content=profile&utm_medium=member_android">LinkedIn</a>
-          </div>
-
-        </div>
-
-        
-
-
-          <div class="team-card">
-
-          <div class="member-image">
-            <img
-              src="../image/nagla.jpeg"
-              alt="Team Member"
-            />
+            <img src="../image/nagla.jpeg" alt="Team Member" />
           </div>
 
           <h3>Nagla Wagdy</h3>
@@ -334,12 +315,13 @@ import Footer from "../components/Footer.vue";
             <li>Maps</li>
             <li>Filter and Search</li>
             <li>My Match and Loading Pages</li>
-            
+
           </ul>
 
           <div class="social">
-            
-            <a href="https://www.linkedin.com/in/ngla-wagdy-9009a3365?utm_source=share_via&utm_content=profile&utm_medium=member_android">LinkedIn</a>
+
+            <a
+              href="https://www.linkedin.com/in/ngla-wagdy-9009a3365?utm_source=share_via&utm_content=profile&utm_medium=member_android">LinkedIn</a>
           </div>
 
         </div>
@@ -394,13 +376,12 @@ import Footer from "../components/Footer.vue";
 
 
   </div>
-  <Footer/>
-  
+  <Footer />
+
 </template>
 
 
 <style scoped>
-
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
 
 
@@ -426,11 +407,9 @@ import Footer from "../components/Footer.vue";
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(
-      circle at 20% 40%,
+    radial-gradient(circle at 20% 40%,
       rgba(190, 130, 30, 0.12),
-      transparent 35%
-    ),
+      transparent 35%),
     #050b12;
 }
 
@@ -462,15 +441,13 @@ import Footer from "../components/Footer.vue";
 .gold-line {
   width: 300px;
   height: 2px;
-  background: linear-gradient(
-    90deg,
-    #d99b28,
-    transparent
-  );
+  background: linear-gradient(90deg,
+      #d99b28,
+      transparent);
   margin: 30px 0;
 }
 
-.hero-content > p {
+.hero-content>p {
   max-width: 560px;
   color: #b8bec6;
   line-height: 1.9;
@@ -495,12 +472,10 @@ import Footer from "../components/Footer.vue";
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(
-      90deg,
+    linear-gradient(90deg,
       #050b12 0%,
-      rgba(5,11,18,0.7) 25%,
-      rgba(5,11,18,0.1) 70%
-    );
+      rgba(5, 11, 18, 0.7) 25%,
+      rgba(5, 11, 18, 0.1) 70%);
 }
 
 
@@ -541,7 +516,7 @@ import Footer from "../components/Footer.vue";
   margin-bottom: 70px;
 }
 
-.section-title > span {
+.section-title>span {
   color: #d99b28;
   letter-spacing: 4px;
   font-size: 13px;
@@ -625,15 +600,15 @@ import Footer from "../components/Footer.vue";
 
 .project-card {
   padding: 45px;
-  border: 1px solid rgba(217,155,40,.5);
-  background: rgba(255,255,255,.025);
+  border: 1px solid rgba(217, 155, 40, .5);
+  background: rgba(255, 255, 255, .025);
   border-radius: 5px;
   transition: .4s;
 }
 
 .project-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 50px rgba(0,0,0,.3);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, .3);
 }
 
 .card-icon {
@@ -669,12 +644,10 @@ import Footer from "../components/Footer.vue";
 .team-card {
   padding: 35px 30px;
   background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.035),
-      rgba(255,255,255,.01)
-    );
-  border: 1px solid rgba(217,155,40,.45);
+    linear-gradient(145deg,
+      rgba(255, 255, 255, .035),
+      rgba(255, 255, 255, .01));
+  border: 1px solid rgba(217, 155, 40, .45);
   border-radius: 12px;
   text-align: center;
   transition: .45s;
@@ -687,7 +660,7 @@ import Footer from "../components/Footer.vue";
   position: absolute;
   width: 120px;
   height: 120px;
-  background: rgba(217,155,40,.08);
+  background: rgba(217, 155, 40, .08);
   border-radius: 50%;
   top: -60px;
   right: -60px;
@@ -696,7 +669,7 @@ import Footer from "../components/Footer.vue";
 .team-card:hover {
   transform: translateY(-12px);
   border-color: #d99b28;
-  box-shadow: 0 20px 60px rgba(0,0,0,.4);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .4);
 }
 
 .member-image {
@@ -749,7 +722,7 @@ import Footer from "../components/Footer.vue";
 .social a {
   color: #d99b28;
   text-decoration: none;
-  border: 1px solid rgba(217,155,40,.4);
+  border: 1px solid rgba(217, 155, 40, .4);
   padding: 7px 13px;
   border-radius: 20px;
   font-size: 11px;
@@ -768,15 +741,15 @@ import Footer from "../components/Footer.vue";
   max-width: 1100px;
   margin: 40px auto 100px;
   padding: 50px;
-  border: 1px solid rgba(217,155,40,.4);
+  border: 1px solid rgba(217, 155, 40, .4);
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 50px;
-  background: rgba(255,255,255,.02);
+  background: rgba(255, 255, 255, .02);
 }
 
 .quote {
-  border-right: 1px solid rgba(217,155,40,.3);
+  border-right: 1px solid rgba(217, 155, 40, .3);
   padding-right: 40px;
 }
 
@@ -814,7 +787,7 @@ import Footer from "../components/Footer.vue";
 footer {
   text-align: center;
   padding: 35px;
-  border-top: 1px solid rgba(255,255,255,.06);
+  border-top: 1px solid rgba(255, 255, 255, .06);
   color: #737d88;
   font-size: 13px;
 }
@@ -836,7 +809,7 @@ footer strong {
   .hero-content {
     width: 100%;
     padding: 90px 8%;
-    background: rgba(5,11,18,.82);
+    background: rgba(5, 11, 18, .82);
   }
 
   .hero-image {
@@ -891,12 +864,11 @@ footer strong {
 
   .quote {
     border-right: none;
-    border-bottom: 1px solid rgba(217,155,40,.3);
+    border-bottom: 1px solid rgba(217, 155, 40, .3);
     padding-right: 0;
     padding-bottom: 30px;
   }
 
 }
-
 </style>
 ```

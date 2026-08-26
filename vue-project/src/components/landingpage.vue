@@ -376,7 +376,7 @@ onUnmounted(() => {
     var(--color-sand);
 
   border-color:
-    var(--color-sand);
+    var(--color-dark);
 
   color:
     var(--color-dark);
@@ -432,51 +432,6 @@ onUnmounted(() => {
 }
 
 
-/* =====================================================
-    SCROLL INDICATOR
-===================================================== */
-
-.scroll-indicator {
-  position: absolute;
-
-  left: 50%;
-  bottom: 35px;
-
-  z-index: 2;
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 12px;
-
-  transform:
-    translateX(-50%);
-
-  color:
-    rgba(255, 255, 255, 0.6);
-
-  font-size: 11px;
-
-  font-weight: 600;
-
-  letter-spacing: 0.2em;
-
-  animation:
-    heroFade 1s 1.1s both;
-}
-
-
-.scroll-indicator span {
-  width: 1px;
-  height: 45px;
-
-  background:
-    var(--color-sand);
-
-  animation:
-    scrollLine 1.8s ease-in-out infinite;
-}
 
 
 /* =====================================================
@@ -523,25 +478,6 @@ onUnmounted(() => {
 }
 
 
-@keyframes scrollLine {
-  0%,
-  100% {
-    transform:
-      scaleY(0.4);
-
-    transform-origin:
-      top;
-  }
-
-  50% {
-    transform:
-      scaleY(1);
-
-    transform-origin:
-      top;
-  }
-}
-
 
 @keyframes glowMove {
   from {
@@ -572,7 +508,7 @@ onUnmounted(() => {
   .hero h1 {
     font-size:
       clamp(
-        3.5rem,
+        vw,
         16vw,
         6rem
       );
@@ -580,10 +516,6 @@ onUnmounted(() => {
 
   .hero-description {
     font-size: 17px;
-  }
-
-  .scroll-indicator {
-    display: none;
   }
 
   .hero-glow {

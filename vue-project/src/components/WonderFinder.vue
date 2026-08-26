@@ -18,6 +18,31 @@ const atmosphere = ref("");
 
 const result = ref(null);
 
+/* =========================
+   IMAGE POSITIONS
+========================= */
+
+const imagePositions = {
+  "great pyramid of giza": "center center",
+  "hanging gardens of babylon": "center center",
+  "temple of artemis": "center 5%",
+  "statue of zeus at olympia": "center 25%",
+  "mausoleum at halicarnassus": "center 5%",
+  "colossus of rhodes": "65% 10%",
+  "lighthouse of alexandria": "center 5%",
+};
+const resultImagePosition = computed(() => {
+  if (!result.value?.title) {
+    return "center center";
+  }
+
+  return (
+    imagePositions[result.value.title.toLowerCase()] ||
+    "center center"
+  );
+});
+
+// ######################################
 const questions = [
   {
     key: "environment",
@@ -433,6 +458,7 @@ const goToWonder = (wonder) => {
         <img
           :src="result.image"
           :alt="result.title"
+          :style="{ objectPosition: resultImagePosition }"
         />
 
       </div>
