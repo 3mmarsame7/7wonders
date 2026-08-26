@@ -96,7 +96,7 @@ onUnmounted(() => {
         <h1>
           WONDERS
           <span>
-            OF THE WORLD
+            OF ANCIENT WORLD
           </span>
         </h1>
 
@@ -119,22 +119,13 @@ onUnmounted(() => {
           </span>
 
           <span class="explore-arrow">
-            ↓
+            ↗
           </span>
         </button>
 
       </div>
 
 
-      <!-- SCROLL INDICATOR -->
-
-      <div class="scroll-indicator">
-
-        <span></span>
-
-        SCROLL TO EXPLORE
-
-      </div>
 
     </section>
 
@@ -385,7 +376,7 @@ onUnmounted(() => {
     var(--color-sand);
 
   border-color:
-    var(--color-sand);
+    var(--color-dark);
 
   color:
     var(--color-dark);
@@ -396,11 +387,11 @@ onUnmounted(() => {
 
 
 .explore-button > span:first-child {
-  font-size: 11px;
+  font-size: 15px;
 
-  font-weight: 700;
+  font-weight: 800;
 
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
 }
 
 
@@ -420,8 +411,9 @@ onUnmounted(() => {
   color:
     var(--color-dark);
 
-  font-size: 20px;
-
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1;
   transition:
     transform 0.4s ease;
 }
@@ -430,7 +422,7 @@ onUnmounted(() => {
 .explore-button:hover
 .explore-arrow {
   transform:
-    translateY(4px);
+    rotate(45deg);
 
   background:
     var(--color-dark);
@@ -440,51 +432,6 @@ onUnmounted(() => {
 }
 
 
-/* =====================================================
-    SCROLL INDICATOR
-===================================================== */
-
-.scroll-indicator {
-  position: absolute;
-
-  left: 50%;
-  bottom: 35px;
-
-  z-index: 2;
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 12px;
-
-  transform:
-    translateX(-50%);
-
-  color:
-    rgba(255, 255, 255, 0.6);
-
-  font-size: 11px;
-
-  font-weight: 600;
-
-  letter-spacing: 0.2em;
-
-  animation:
-    heroFade 1s 1.1s both;
-}
-
-
-.scroll-indicator span {
-  width: 1px;
-  height: 45px;
-
-  background:
-    var(--color-sand);
-
-  animation:
-    scrollLine 1.8s ease-in-out infinite;
-}
 
 
 /* =====================================================
@@ -531,25 +478,6 @@ onUnmounted(() => {
 }
 
 
-@keyframes scrollLine {
-  0%,
-  100% {
-    transform:
-      scaleY(0.4);
-
-    transform-origin:
-      top;
-  }
-
-  50% {
-    transform:
-      scaleY(1);
-
-    transform-origin:
-      top;
-  }
-}
-
 
 @keyframes glowMove {
   from {
@@ -580,7 +508,7 @@ onUnmounted(() => {
   .hero h1 {
     font-size:
       clamp(
-        3.5rem,
+        vw,
         16vw,
         6rem
       );
@@ -588,10 +516,6 @@ onUnmounted(() => {
 
   .hero-description {
     font-size: 17px;
-  }
-
-  .scroll-indicator {
-    display: none;
   }
 
   .hero-glow {

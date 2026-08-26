@@ -1,6 +1,6 @@
 [file name]: Mausoleum.vue
 <script setup>
-import WonderSection from "./WonderSection.vue";
+import WonderDetail from "./WonderDetail.vue";
 import Navbar from "./Navbar.vue";
 import Footer from "./Footer.vue";
 
@@ -15,11 +15,12 @@ const wonder = {
     image:
         "https://cdn.britannica.com/60/168960-050-766C48B3/Artist-re-creation-Mausoleum-of-Halicarnassus.jpg",
     theme: "stone",
+    imagePosition: "center 13%",
 };
 </script>
 
 <template>
     <Navbar />
-    <WonderSection v-bind="wonder" />
+    <WonderDetail v-bind="wonder" />
     <Footer />
 </template>

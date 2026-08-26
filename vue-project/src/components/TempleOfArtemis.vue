@@ -1,6 +1,6 @@
 
 <script setup>
-import WonderSection from "./WonderSection.vue";
+import WonderDetail from "./WonderDetail.vue";
 import Navbar from "./Navbar.vue";
 import Footer from "./Footer.vue";
 
@@ -15,11 +15,12 @@ const wonder = {
     image:
         "https://cdn.britannica.com/51/168951-050-FF56AB5F/Temple-of-Artemis-Ephesus.jpg",
     theme: "marble",
+    imagePosition: "95% 25%",
 };
 </script>
 
 <template>
     <Navbar />
-    <WonderSection v-bind="wonder" />
+    <WonderDetail v-bind="wonder" />
     <Footer />
 </template>

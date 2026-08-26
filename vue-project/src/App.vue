@@ -1,5 +1,4 @@
 
-[file name]: App.vue
 <script setup>
 import {
   onMounted,
@@ -15,9 +14,11 @@ import SearchFilter from "./components/SearchFilter.vue";
 import LandingPage from "./components/landingpage.vue";
 import About from "./components/About.vue";
 import Footer from "./components/Footer.vue";
+import WonderFinderPage from "./views/WonderFinderPage.vue";
+import LoadingScreen from "./components/LoadingScreen.vue";
 
 /* =====================================================
-   STATE
+    STATE
 ===================================================== */
 const activeWonder = ref("01");
 const wonders = ref([]);
@@ -54,12 +55,12 @@ const handleFilterChange = (filters) => {
 let observer;
 
 /* =====================================================
-   API
+    API
 ===================================================== */
 const API_URL = "https://www.world-wonders-api.org/v0/wonders";
 
 /* =====================================================
-   WONDER THEMES
+    WONDER THEMES
 ===================================================== */
 const getWonderTheme = (name) => {
   const title = name?.toLowerCase() || "";
@@ -73,13 +74,50 @@ const getWonderTheme = (name) => {
   return "sand";
 };
 
+const imagePositions = {
+  "great pyramid": "center 70%",
+  "hanging gardens": "90% 50%",
+  "temple of artemis": "70% 55%",
+  "statue of zeus": "center 45%",
+  "mausoleum": "70% 60%",
+  "colossus": "90% 35%",
+  "lighthouse": "center 40%",
+};
+
+const getImagePosition = (name) => {
+  const title = name?.toLowerCase() || "";
+
+  const key = Object.keys(imagePositions).find((key) =>
+    title.includes(key)
+  );
+
+  return imagePositions[key] || "center center";
+};
 /* =====================================================
-   FETCH WONDERS
+    WONDER Map
+===================================================== */
+const getCoordinatesFromGoogleMaps = (url) => {
+  if (!url) return null;
+
+  const match = url.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/);
+
+  if (!match) return null;
+
+  return {
+    lat: Number(match[1]),
+    lng: Number(match[2]),
+  };
+};
+/* =====================================================
+    FETCH WONDERS
 ===================================================== */
 const fetchWonders = async () => {
   try {
     loading.value = true;
     error.value = null;
+    const minimumLoadingTime = new Promise((resolve) => {
+    setTimeout(resolve, 4000);
+    });
 
     const response = await fetch(API_URL);
     if (!response.ok) throw new Error(`API returned ${response.status}`);
@@ -118,8 +156,11 @@ const fetchWonders = async () => {
         built: typeof wonder.build_year === "number" ? (wonder.build_year < 0 ? `c. ${Math.abs(wonder.build_year)} BCE` : `c. ${wonder.build_year}`) : wonder.build_year || "UNKNOWN",
         image: wonder.links?.images?.[0] || wonder.image || "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368",
         theme: getWonderTheme(wonderName),
+        imagePosition: getImagePosition(wonderName),
+        coordinates: getCoordinatesFromGoogleMaps(wonder.links?.google_maps),
       };
     });
+    await minimumLoadingTime;
   } catch (err) {
     console.error("Wonders API Error:", err);
     error.value = "Failed to load the ancient wonders.";
@@ -129,7 +170,7 @@ const fetchWonders = async () => {
 };
 
 /* =====================================================
-   MOUNT
+    MOUNT
 ===================================================== */
 onMounted(async () => {
   await fetchWonders();
@@ -155,20 +196,19 @@ onUnmounted(() => observer?.disconnect());
 </script>
 
 <template>
+
+  <LoadingScreen v-if="loading" />
   <!-- ====================== LANDING PAGE ====================== -->
-  <LandingPage v-if="$route.path === '/'" />
+  <LandingPage v-if="$route.path === '/'"
+        :wonders="wonders" />
 
   <!-- ====================== WONDERS PAGE (اللستة الطويلة) ====================== -->
   <main v-else-if="$route.path === '/wonders'" class="wonders-page">
     <Navbar />
     <SearchFilter :locations="locations" @filter-change="handleFilterChange" />
 
-    <section v-if="loading" class="status-section">
-      <div class="loader"></div>
-      <p>LOADING WONDERS...</p>
-    </section>
 
-    <section v-else-if="error" class="status-section error-section">
+    <section v-if="error" class="status-section error-section">
       <p>{{ error }}</p>
       <button class="retry-button" @click="fetchWonders">TRY AGAIN</button>
     </section>
@@ -193,8 +233,14 @@ onUnmounted(() => observer?.disconnect());
   <!-- ====================== ABOUT PAGE ====================== -->
   <About v-else-if="$route.path === '/about'" />
 
+  <!-- ====================== MATCH PAGE ====================== -->
+  <WonderFinderPage
+    v-else-if="$route.path === '/match'"
+    :wonders="wonders"
+  />
+
   <!-- ====================== FALLBACK ====================== -->
-  <LandingPage v-else />
+  <router-view v-else />
 </template>
 
 <style scoped>

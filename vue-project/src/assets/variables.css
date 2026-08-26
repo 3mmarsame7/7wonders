@@ -21,7 +21,6 @@
     --radius-lg: 40px;
 
     --transition-fast: 0.3s ease;
-
     --transition-medium:
         0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
